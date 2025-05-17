@@ -2,63 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout - GotoMarket</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-
-    h2 {
-      color: #333;
-    }
-
-    form {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-
-    button {
-      background-color: #00bfa5;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #009f88;
-    }
-  </style>
+  <title>Payment - Phantom studioZ</title>
 </head>
 <body>
+  <h1>Secure Payment with Yoco</h1>
+  <p>Total: <span id="payment-amount">$0</span></p>
 
-<h2>Customer Information</h2>
-<form id="checkout-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-  <input type="text" name="name" placeholder="Full Name" required />
-  <input type="email" name="email" placeholder="Email Address" required />
-  <input type="text" name="address" placeholder="Delivery Address" required />
-  <input type="text" name="city" placeholder="City" required />
-  <input type="text" name="zip" placeholder="ZIP Code" required />
+  <!-- Replace this with your actual Yoco redirect link -->
+  <a href="https://pay.yoco.com/your-yoco-link" target="_blank">
+    <button>Pay with Yoco</button>
+  </a>
 
-  <!-- Hidden field or message -->
-  <input type="hidden" name="_next" value="https://pay.yoco.com/YOUR-YOCO-LINK" />
-
-  <button type="submit">Proceed to Payment</button>
-</form>
-
+  <p><a href="confirmation.html">I have completed payment</a></p>
 </body>
 </html>
 
