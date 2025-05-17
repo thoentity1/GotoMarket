@@ -103,7 +103,14 @@
   <input type="email" name="email" placeholder="Email" required><br>
   <button type="submit">Continue to Cart</button>
 </form>
-
+<form action="//https://formspree.io/f/mgvkdpww" method="POST" onsubmit="setTimeout(() => window.location.href='https://pay.yoco.com/YOUR_YOCO_LINK_1', 500);">
+      <label>Your Name</label>
+      <input type="text" name="name" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
+           <input type="hidden" name="course" value="Braiding and Hair Styling - R850">
+      <div></div>
+      <a href="cart.html" class="button">Proceed to Checkout</a>
 <script>
 document.getElementById('deliveryForm').addEventListener('submit', function (e) {
   e.preventDefault(); // prevent normal form submission
