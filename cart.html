@@ -1,6 +1,211 @@
-<!-- Example layout -->
-<h2>Your Cart</h2>
-<div id="cartItems">
-  <!-- Cart items populated via JS -->
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart | Phantom studioZ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff9f7;
+    }
+
+    header {
+      background-color: #fff9f7;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    .cart {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .cart h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .cart button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .cart button:hover {
+      background-color: #e64a3b;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Phantom studioZ</h1>
+  <p>Your Cart</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="course.html">Courses</a>
+  <a href="retail.html">Retail</a>
+  <a href="contact.html">Contact</a>
+  <a href="signin.html">Sign In</a>
+</nav>
+
+<div class="cart">
+  <h2>Items in Your Cart</h2>
+  <div class="cart-item">
+    <p>Sample Product 1 - R300</p>
+  </div>
+  <div class="cart-item">
+    <p>Sample Product 2 - R450</p>
+  </div>
+  <p><strong>Total: R750</strong></p>
+  <button onclick="window.location.href='payment.html'">Proceed to Payment</button>
 </div>
-<a href="payment.html" class="button">Proceed to Payment</a>
+
+</body>
+</html>
+
+
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | Phantom studioZ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff9f7;
+    }
+
+    header {
+      background-color: #fff9f7;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    .payment {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .payment h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #e64a3b;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Phantom studioZ</h1>
+  <p>Payment Page</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="course.html">Courses</a>
+  <a href="retail.html">Retail</a>
+  <a href="contact.html">Contact</a>
+  <a href="signin.html">Sign In</a>
+</nav>
+
+<div class="payment">
+  <h2>Enter Payment Details</h2>
+  <input type="text" placeholder="Card Number" required>
+  <input type="text" placeholder="Expiry Date" required>
+  <input type="text" placeholder="CVV" required>
+  <button onclick="alert('Payment Submitted!')">Submit Payment</button>
+</div>
+
+</body>
+</html>
