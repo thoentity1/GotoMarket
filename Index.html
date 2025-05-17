@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Delivery Address | GotoMarket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f9f9f9;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e64a3b;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter Delivery Address</h2>
+  <form action="https://formspree.io/f/mgvkdpww" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required />
+    <input type="text" name="address" placeholder="Address" required />
+    <input type="text" name="city" placeholder="City" required />
+    <input type="text" name="zip" placeholder="ZIP Code" required />
+    <input type="email" name="email" placeholder="Email" required />
+    
+    <!-- Redirect to cart.html after successful submission -->
+    <input type="hidden" name="_next" value="https://thoentity1.github.io/GotoMarket/cart.html" />
+    
+    <button type="submit">Continue to Cart</button>
+  </form>
+
+</body>
+</html>
