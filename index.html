@@ -94,16 +94,42 @@
   <ul id="cart-items"></ul>
   <p><strong>Total:</strong> R<span id="total">0</span></p>
 
-  <form action="https://formspree.io/f/your-form-id" method="POST">
-    <h3>Delivery Address</h3>
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="text" name="address" placeholder="Street Address" required>
-    <input type="text" name="city" placeholder="City" required>
-    <input type="text" name="zip" placeholder="Postal Code" required>
-    <input type="hidden" name="cart" id="cart-data">
-    <!-- Redirect to cart.html after successful submission -->
-    <input type="hidden" name="_next" value="https://thoentity1.github.io/GotoMarket/cart.html" />
-    
+  <form <form id="deliveryForm">
+  <h2>Delivery Address</h2>
+  <input type="text" name="name" placeholder="Full Name" required><br>
+  <input type="text" name="address" placeholder="Address" required><br>
+  <input type="text" name="city" placeholder="City" required><br>
+  <input type="text" name="zip" placeholder="ZIP Code" required><br>
+  <input type="email" name="email" placeholder="Email" required><br>
+  <button type="submit">Continue to Cart</button>
+</form>
+
+<script>
+document.getElementById('deliveryForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // prevent normal form submission
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch("https://formspree.io/f/YOUR_FORM_ID", {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      window.location.href = "cart.html"; // redirect manually
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  }).catch(error => {
+    console.error("Formspree error:", error);
+    alert("There was an error submitting the form.");
+  });
+});
+</script>
+
     <button type="submit">Continue to Cart</button>
     </form>
 </div>
