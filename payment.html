@@ -1,16 +1,153 @@
-<h2>Secure Payment</h2>
-<p>Enter payment info (simulated)</p>
-<form onsubmit="return handlePayment();">
-  <input type="text" placeholder="Card Number" required><br>
-  <input type="text" placeholder="Expiration" required><br>
-  <input type="text" placeholder="CVV" required><br>
-  <button type="submit">Pay Now</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phantom studioZ | Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff9f7;
+    }
+
+    header {
+      background-color: #fff9f7;
+      color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff6f61;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #ff6f61;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #e64a3b;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Phantom studioZ</h1>
+  <p>Secure Payment</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="course.html">Courses</a>
+  <a href="retail.html">Retail</a>
+  <a href="contact.html">Contact</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<div class="container">
+  <h2>Complete Your Payment</h2>
+  <form id="paymentForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="amount" placeholder="Amount (ZAR)" required>
+    <input type="text" name="notes" placeholder="Order Notes (Optional)">
+    <input type="hidden" name="_subject" value="New Payment Submission from Phantom studioZ">
+
+    <button type="button" id="payYoco">Pay with Card</button>
+  </form>
+</div>
+
+<footer>
+  &copy; 2025 Phantom studioZ. All rights reserved.
+</footer>
 
 <script>
-function handlePayment() {
-  alert("Payment processed successfully!");
-  window.location.href = "thankyou.html";
-  return false;
-}
+  const yoco = new window.YocoSDK({
+    publicKey: 'pk_test_YourYocoPublicKey'
+  });
+
+  const payBtn = document.getElementById('payYoco');
+  payBtn.addEventListener('click', async function () {
+    const form = document.getElementById('paymentForm');
+    const amount = parseFloat(form.amount.value);
+    if (!amount || isNaN(amount)) {
+      alert("Enter a valid amount.");
+      return;
+    }
+
+    const response = await yoco.showPopup({
+      amountInCents: amount * 100,
+      currency: 'ZAR',
+      name: 'Phantom studioZ',
+      description: 'Online Payment'
+    });
+
+    if (response && response.id) {
+      alert("Payment successful! Token: " + response.id);
+      form.submit();
+    } else {
+      alert("Payment was canceled or failed.");
+    }
+  });
 </script>
+
+</body>
+</html>
+
