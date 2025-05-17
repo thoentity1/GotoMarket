@@ -1,0 +1,43 @@
+<form id="addressForm">
+  <h2>Delivery Address</h2>
+  <input type="text" name="name" placeholder="Full Name" required><br>
+  <input type="text" name="address" placeholder="Address" required><br>
+  <input type="text" name="city" placeholder="City" required><br>
+  <input type="text" name="zip" placeholder="ZIP Code" required><br>
+  <input type="email" name="email" placeholder="Email" required><br>
+  <button type="submit">Continue to Cart</button>
+</form>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    databaseURL: "YOUR_DB_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_BUCKET",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  document.getElementById('addressForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const data = {
+      name: this.name.value,
+      address: this.address.value,
+      city: this.city.value,
+      zip: this.zip.value,
+      email: this.email.value,
+    };
+
+    push(ref(db, 'customers'), data).then(() => {
+      window.location.href = "cart.html";
+    });
+  });
+</script>
