@@ -1,28 +1,132 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Phantom studioZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0710;
+      color: #fff;
+      margin: 0;
+    }
+    .navbar {
+      background-color: #550060;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .navbar h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ff00aa;
+    }
+    h2 {
+      text-align: center;
+      color: #ff00aa;
+      margin: 40px 0 20px;
+    }
+    .cart-items {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: #1a1124;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 0, 170, 0.1);
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+    }
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #ff00aa;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .buttons button, .buttons a {
+      background: #ff00aa;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 20px;
+      margin: 0 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1a1124;
+      color: #888;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1>Phantom studioZ</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="retail.html">Retail</a>
+      <a href="#">Services</a>
+      <a href="#">Academy</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-function addToCart(name, price) {
-  cart.push({ name, price });
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(`${name} added to cart!`);
-}
+  <h2>Your Cart</h2>
+  <div class="cart-items" id="cartItems"></div>
 
-function displayCart() {
-  const cartItemsDiv = document.getElementById("cart-items");
-  const totalPriceEl = document.getElementById("total-price");
-  if (!cartItemsDiv || !totalPriceEl) return;
+  <div class="buttons">
+    <a href="retail.html">Continue Shopping</a>
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
 
-  cartItemsDiv.innerHTML = "";
-  let total = 0;
+  <footer>© 2025 Phantom studioZ — Cart Page</footer>
 
-  cart.forEach(item => {
-    const div = document.createElement("div");
-    div.textContent = `${item.name} - $${item.price}`;
-    cartItemsDiv.appendChild(div);
-    total += item.price;
-  });
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cartItems");
 
-  totalPriceEl.textContent = `Total: $${total}`;
-  localStorage.setItem("total", total);
-}
+    if (cart.length === 0) {
+      container.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        container.innerHTML += `
+          <div class="item">
+            <span>${item.product}</span>
+            <span>R${item.price}</span>
+          </div>
+        `;
+      });
+      container.innerHTML += `<div class="total">Total: R${total}</div>`;
+    }
 
-document.addEventListener("DOMContentLoaded", displayCart);
+    function clearCart() {
+      localStorage.removeItem("cart");
+      location.reload();
+    }
+  </script>
+</body>
+</html>
