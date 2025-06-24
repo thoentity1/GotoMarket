@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,96 +6,74 @@
 }
 
 body {
-  background-color: #000000; /* deep black */
-  color: #c0c0c0; /* default silver text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  padding: 20px;
+  background-color: #000000; /* Black background */
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  color: #FFD700; /* Gold text for general elements unless overridden */
 }
 
 /* Headings */
-h1, h2, h3 {
-  color: #FFD700; /* gold */
+h1, h2, h3, h4 {
+  color: #FFD700; /* Gold */
   margin-bottom: 10px;
-  text-shadow: 1px 1px 2px #222;
 }
 
-/* Product Sections */
+/* Section Container */
 section {
   margin-bottom: 40px;
   padding: 20px;
-  border: 1px solid #444;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.02); /* Slight contrast */
+  border-left: 6px solid #8B0000; /* Deep seductive red accent */
 }
 
-/* Titles */
-.title {
-  font-size: 2.2rem;
+/* Section Labels like 💘 💔 🖤 */
+.label {
+  font-size: 1.6rem;
   font-weight: bold;
-  color: #FFD700;
-  text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  display: block;
+  color: #FFD700; /* Gold */
 }
 
-/* Product Item */
+/* Product Entry */
 .product {
   margin-bottom: 20px;
   padding: 15px;
-  border-left: 4px solid #FF0000; /* red accent */
-  background-color: rgba(255, 255, 255, 0.04);
-  border-radius: 6px;
+  background-color: rgba(255, 0, 0, 0.05); /* Soft red background glow */
+  border-radius: 8px;
+  border: 1px solid #8B0000;
 }
 
-/* Product Name */
+/* Product Title */
 .product h4 {
-  color: #FFD700; /* gold */
-  margin-bottom: 5px;
   font-size: 1.3rem;
+  color: #FFD700; /* Gold title */
+  margin-bottom: 6px;
 }
 
-/* Description */
-.product p {
-  color: #C0C0C0; /* silver */
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-/* Price (optional class) */
+/* Description and Price */
+.product p,
 .price {
-  color: #C0C0C0; /* silver */
-  font-weight: bold;
+  color: #C0C0C0; /* Silver */
+  font-size: 1rem;
 }
 
-/* Red Accent Line or Element */
-hr.red-line {
-  border: none;
-  height: 2px;
-  background-color: red;
-  margin: 20px 0;
-}
-
-/* Buttons (if needed) */
+/* Optional Buttons */
 .button {
-  background-color: #8B0000; /* dark red */
-  color: gold;
-  border: 1px solid gold;
+  background-color: #8B0000;
+  color: #FFD700;
   padding: 10px 20px;
+  margin-top: 10px;
+  border: 2px solid #FFD700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .button:hover {
-  background-color: gold;
+  background-color: #FFD700;
   color: black;
-}
-
-/* Section Labels (like 💘, 💔, 🖤) */
-.label {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  display: block;
 }
