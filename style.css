@@ -9,12 +9,12 @@ body {
   background-color: #000000; /* Black background */
   font-family: 'Segoe UI', sans-serif;
   padding: 30px;
-  color: #FFD700; /* Gold text for general elements unless overridden */
+  color: #cfa85c; /* Exact gold from logo */
 }
 
 /* Headings */
 h1, h2, h3, h4 {
-  color: #FFD700; /* Gold */
+  color: #cfa85c; /* Exact gold */
   margin-bottom: 10px;
 }
 
@@ -33,7 +33,7 @@ section {
   font-weight: bold;
   margin-bottom: 15px;
   display: block;
-  color: #FFD700; /* Gold */
+  color: #cfa85c; /* Exact gold */
 }
 
 /* Product Entry */
@@ -48,7 +48,7 @@ section {
 /* Product Title */
 .product h4 {
   font-size: 1.3rem;
-  color: #FFD700; /* Gold title */
+  color: #cfa85c; /* Exact gold */
   margin-bottom: 6px;
 }
 
@@ -62,10 +62,10 @@ section {
 /* Optional Buttons */
 .button {
   background-color: #8B0000;
-  color: #FFD700;
+  color: #cfa85c;
   padding: 10px 20px;
   margin-top: 10px;
-  border: 2px solid #FFD700;
+  border: 2px solid #cfa85c;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s ease;
@@ -74,6 +74,7 @@ section {
 }
 
 .button:hover {
-  background-color: #FFD700;
+  background-color: #cfa85c;
   color: black;
 }
+
