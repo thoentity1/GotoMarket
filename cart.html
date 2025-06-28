@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart - Afterglow Givers</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #cfa85c;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: linear-gradient(to bottom, #000000 60%, #1a1a1a);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+      border-bottom: 2px solid #cfa85c;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+    .navbar img {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .navbar a {
+      color: #cfa85c !important;
+      background-color: transparent;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #FFD700;
+    }
+    .cart-section {
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #cfa85c;
+    }
+    .cart-items {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      color: silver;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #cfa85c;
+    }
+    .checkout {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .checkout button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      border: 2px solid #cfa85c;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .address-form {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .address-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: silver;
+    }
+    .address-form input, .address-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">
+        <img src="Logo_Image.jpg" alt="Afterglow Givers Logo">
+      </a>
+      <a href="index.html">Home</a>
+      <a href="retail.html">Retail</a>
+      <a href="cart.html">Cart</a>
+      <a href="giftcard.html">Gift Card</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+
+  <section class="cart-section">
+    <h1>Your Cart</h1>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="total" id="cart-total"></div>
+
+    <div class="address-form">
+      <h2>Delivery Details</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+
+      <label for="notes">Special Instructions</label>
+      <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+    </div>
+
+    <div class="checkout">
+      <button onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </section>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    document.getElementById('cart-count').textContent = cartItems.length;
+
+    const itemsContainer = document.getElementById("cart-items");
+    const totalDisplay = document.getElementById("cart-total");
+
+    let total = 0;
+    if (cartItems.length === 0) {
+      itemsContainer.innerHTML = "<p style='text-align: center; color: silver;'>Your cart is empty.</p>";
+    } else {
+      cartItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `<span>${item.name}</span><span>R${item.price}</span>`;
+        itemsContainer.appendChild(div);
+        total += parseFloat(item.price);
+      });
+      totalDisplay.textContent = `Total: R${total.toFixed(2)}`;
+    }
+
+    function checkout() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+
+      if (!name || !email || !address) {
+        alert("Please fill in your name, email, and delivery address.");
+        return;
+      }
+
+      alert("Thank you! Your order is being processed.");
+    }
+  </script>
+</body>
+</html>
