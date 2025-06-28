@@ -1,64 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AfterGlow Gifts</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail - Afterglow Gifts</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* Inline for layout-specific tweaks */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+    .section-heading {
+      color: #cfa85c;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.8rem;
+      border-bottom: 1px solid #8B0000;
+      padding-bottom: 10px;
     }
-
-    .grid {
+    .product-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 30px;
+      padding: 20px;
     }
-
-    .card {
+    .product-card {
       background-color: rgba(255,255,255,0.02);
       border: 1px solid #8B0000;
-      padding: 20px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 270px;
-      box-sizing: border-box;
+      padding: 15px;
+      width: 260px;
       text-align: center;
+      border-radius: 10px;
     }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .navbar a {
-        display: block;
-        margin: 10px 0;
-      }
-      .grid {
-        flex-direction: column;
-        align-items: center;
-      }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product-card h3 {
+      color: #cfa85c;
+    }
+    .product-card p {
+      color: #C0C0C0;
+    }
+    .price {
+      color: silver;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      padding: 8px 16px;
+      border: 2px solid #cfa85c;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #000;
+      border-bottom: 1px solid #8B0000;
+    }
+    .navbar a {
+      color: #cfa85c;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar img {
+      height: 50px;
+      border-radius: 8px;
+    }
+    .cart {
+      background-color: #111;
+      border: 2px solid #cfa85c;
+      color: #cfa85c;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-   <!-- Logo -->
-  <div style="text-align: center; margin-bottom: 30px;">
-    <img src="Logo_Image.jpg" alt="AfterGlow Givers Logo" 
-         style="max-width: 180px; border-radius: 14px; box-shadow: 0 0 15px #cfa85c;">
-  </div>
-   <!-- Navigation -->
-  <nav class="navbar">
+
+<!-- Navigation with Logo -->
+<nav class="navbar">
+  <a href="index.html">
+    <img src="Logo_Image.jpg" alt="Afterglow Givers Logo">
+  </a>
+  <div>
     <a href="index.html">Home</a>
     <a href="retail.html">Retail</a>
-    <a href="#">Cart</a>
-    <a href="gift card.html">Gift card</a>
+    <a href="cart.html">Cart</a>
+    <a href="giftcard.html">Gift Card</a>
     <a href="#">Contact</a>
+  </div>
   </nav>
 
   <!-- Hero -->
