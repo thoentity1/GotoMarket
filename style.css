@@ -88,13 +88,15 @@ section {
   background-color: #8B0000;
   color: #cfa85c;
   padding: 10px 20px;
-  margin-top: 10px;
   border: 2px solid #cfa85c;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
   transition: 0.3s ease;
   text-transform: uppercase;
-  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+  white-space: nowrap;
 }
 
 .button:hover {
