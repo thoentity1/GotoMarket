@@ -5,7 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retail - Afterglow Gifts</title>
   <link rel="stylesheet" href="style.css">
-  <style>/* your existing CSS unchanged */</style>
+  <style>
+    .section-heading {
+      color: #cfa85c;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.8rem;
+      border-bottom: 1px solid #8B0000;
+      padding-bottom: 10px;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+    .product-card {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid #8B0000;
+      padding: 15px;
+      width: 260px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product-card h3 {
+      color: #cfa85c;
+    }
+    .product-card p {
+      color: #C0C0C0;
+    }
+    .price {
+      color: silver;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      padding: 8px 16px;
+      border: 2px solid #cfa85c;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #000;
+      border-bottom: 1px solid #8B0000;
+    }
+    .navbar a {
+      color: #cfa85c;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar img {
+      height: 50px;
+      border-radius: 8px;
+    }
+    .cart {
+      background-color: #111;
+      border: 2px solid #cfa85c;
+      color: #cfa85c;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,47 +101,105 @@
   <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
 </nav>
 
-<!-- Products -->
 <h2 class="section-heading">💘 Signature Sensual Packs</h2>
 <div class="product-grid">
   <div class="product-card">
     <img src="images/midnight-massager.jpg" alt="Midnight Pulse Massager">
     <h3>Midnight Pulse Massager</h3>
-    <p>High‑intensity silicone vibrator for solo or couple play.</p>
+    <p>High-intensity silicone vibrator for solo or couple play.</p>
     <div class="price">R799</div>
     <button class="button" onclick="addToCart('Midnight Pulse Massager')">Add to Cart</button>
   </div>
-  <!-- other product cards here unchanged -->
+  <div class="product-card">
+    <img src="images/tease-game-kit.jpg" alt="Tease & Please Game Kit">
+    <h3>Tease & Please Game Kit</h3>
+    <p>Playful dares and surprises to spice up your night.</p>
+    <div class="price">R499</div>
+    <button class="button" onclick="addToCart('Tease & Please Game Kit')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/sensual-sweets.jpg" alt="Sensual Smoke Sweets">
+    <h3>Sensual Smoke Sweets</h3>
+    <p>THC-infused candy for relaxing pleasure.</p>
+    <div class="price">R199</div>
+    <button class="button" onclick="addToCart('Sensual Smoke Sweets')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/naughty-nights.jpg" alt="Naughty Nights Party Pack">
+    <h3>Naughty Nights Party Pack</h3>
+    <p>Perfect for birthdays, anniversaries, or wild weekends.</p>
+    <div class="price">R899</div>
+    <button class="button" onclick="addToCart('Naughty Nights Party Pack')">Add to Cart</button>
+  </div>
 </div>
-<!-- ... rest of product grids ... -->
+
+<h2 class="section-heading">💔 Breakup Recovery Boxes</h2>
+<div class="product-grid">
+  <div class="product-card">
+    <img src="images/glow-up-box.jpg" alt="Glow Up & Move On">
+    <h3>Glow Up & Move On (For Her)</h3>
+    <p>Rose vibrator, CBD gummies, affirmations, candle, wine cup & playlist QR.</p>
+    <div class="price">R1099</div>
+    <button class="button" onclick="addToCart('Glow Up & Move On')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/bounce-back-bro.jpg" alt="Bounce Back Bro">
+    <h3>Bounce Back Bro (For Him)</h3>
+    <p>Bullet stimulator, THC mints, flask, affirmation cards & playlist QR.</p>
+    <div class="price">R1099</div>
+    <button class="button" onclick="addToCart('Bounce Back Bro')">Add to Cart</button>
+  </div>
+</div>
+
+<h2 class="section-heading">🖤 Dominatrix Collection</h2>
+<div class="product-grid">
+  <div class="product-card">
+    <img src="images/touch-of-control.jpg" alt="Beginner Dom Box">
+    <h3>Beginner Dom Box: “Touch of Control”</h3>
+    <p>Velvet cuffs, silk scarves, blindfold, safe word cards, door sign.</p>
+    <div class="price">R899</div>
+    <button class="button" onclick="addToCart('Beginner Dom Box')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/command-conquer.jpg" alt="Mistress Essentials">
+    <h3>Mistress Essentials: “Command & Conquer”</h3>
+    <p>Whip, collar & leash, wax candles, red lipstick kit, ribbon belt.</p>
+    <div class="price">R1299</div>
+    <button class="button" onclick="addToCart('Mistress Essentials')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/obey-tonight.jpg" alt="Scene Night Kit">
+    <h3>Scene Night Kit: “Obey Tonight”</h3>
+    <p>Riding crop, massage oil, roleplay cards, playlist, LED light.</p>
+    <div class="price">R1199</div>
+    <button class="button" onclick="addToCart('Scene Night Kit')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/glow-punish.jpg" alt="Domina Body Box">
+    <h3>Domina Body Box: “Glow & Punish”</h3>
+    <p>Body scrub & oil, lipstick, bondage scarf, scented melts, mirror cards.</p>
+    <div class="price">R1399</div>
+    <button class="button" onclick="addToCart('Domina Body Box')">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="images/switch-seduce.jpg" alt="Power Couple Set">
+    <h3>Power Couple Set: “Switch & Seduce”</h3>
+    <p>Masks, rule card game, bubbly, decor, consent deck.</p>
+    <div class="price">R1499</div>
+    <button class="button" onclick="addToCart('Power Couple Set')">Add to Cart</button>
+  </div>
+</div>
 
 <script>
-  function addToCart(name) {
-    const btn = event.currentTarget;
-    const card = btn.closest('.product-card');
-    const priceText = card.querySelector('.price').textContent;
-    const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+ function addToCart(name, price) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  cartItems.push({ name, price });
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  alert(${name} added to cart.);
+  updateCartCount();
+}
+ <script> 
 
-    if (isNaN(price)) {
-      console.error('Invalid price for', name);
-      return;
-    }
-
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cartItems.push({ name, price });
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-    alert(`${name} (R${price}) added to cart.`);
-    updateCartCount();
-  }
-
-  function updateCartCount() {
-    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
-    document.getElementById('cart-count').textContent = count;
-  }
-
-  document.addEventListener('DOMContentLoaded', updateCartCount);
-</script>
 
 </body>
 </html>
