@@ -6,6 +6,135 @@
   <title>Afterglow Givers</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="retail.html">Retail</a>
+    <a href="#">Services</a>
+    <a href="#">Academy</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Logo -->
+  <div style="text-align: center; margin-bottom: 30px;">
+    <img src="Logo_Image.jpg" alt="AfterGlow Givers Logo" 
+         style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 15px #cfa85c;">
+  </div>
+
+  <!-- Hero Section -->
+  <section style="text-align: center; padding: 40px 20px;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Welcome to Afterglow Givers</h1>
+    <p style="color: #C0C0C0; font-size: 1.2rem; margin-bottom: 30px;">
+      Gifts that tease, please, and seduce.  
+      <br>Sensuality redefined, curated for bold pleasure seekers.
+    </p>
+    <a href="retail.html" class="button">Enter the Pleasure Boutique</a>
+  </section>
+
+  <!-- Featured Categories -->
+  <section style="text-align: center;">
+    <h2 style="margin-bottom: 30px;">Explore Our World</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+        <h4>💘 Signature Packs</h4>
+        <p style="color: #C0C0C0;">Luxury gift boxes for pleasure and play.</p>
+        <a href="retail.html" class="button">Shop Now</a>
+      </div>
+
+      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+        <h4>🖤 Services</h4>
+        <p style="color: #C0C0C0;">Private bookings, parties, romantic events.</p>
+        <a href="#" class="button">Learn More</a>
+      </div>
+
+      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+        <h4>🎓 Academy</h4>
+        <p style="color: #C0C0C0;">Workshops and empowerment for sensual growth.</p>
+        <a href="#" class="button">Explore</a>
+      </div>
+
+      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+        <h4>📩 Contact</h4>
+        <p style="color: #C0C0C0;">Questions? Let's connect in confidence.</p>
+        <a href="#" class="button">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="text-align: center; margin-top: 50px; color: #C0C0C0;">
+    <p>&copy; 2025 Afterglow Givers. All rights reserved.</p>
+  </footer>
+
+  <!-- Age Confirmation Overlay -->
+  <div id="age-overlay" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #000000ee;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+  ">
+    <h2 style="color: #cfa85c; font-size: 2rem; margin-bottom: 20px;">Welcome to Afterglow Givers</h2>
+    <p style="color: #C0C0C0; font-size: 1.2rem; margin-bottom: 30px;">
+      This website contains sensual and adult-themed products.<br>
+      Are you 18 years of age or older?
+    </p>
+
+    <div>
+      <button onclick="enterSite()" style="
+        background-color: #8B0000;
+        color: #cfa85c;
+        padding: 10px 20px;
+        margin: 10px;
+        font-weight: bold;
+        border: 2px solid #cfa85c;
+        border-radius: 8px;
+        cursor: pointer;
+      ">Yes, I’m 18+</button>
+
+      <button onclick="denyAccess()" style="
+        background-color: transparent;
+        color: #C0C0C0;
+        padding: 10px 20px;
+        margin: 10px;
+        border: 2px solid #C0C0C0;
+        border-radius: 8px;
+        cursor: pointer;
+      ">No</button>
+    </div>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('age-overlay').style.display = 'none';
+    }
+
+    function denyAccess() {
+      alert("Sorry, you must be 18 or older to enter this site.");
+      window.location.href = "https://www.google.com";
+    }
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Afterglow Givers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
   <!-- Age Confirmation Overlay -->
 <div id="age-overlay" style="
   position: fixed;
