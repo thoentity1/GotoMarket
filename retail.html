@@ -5,94 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Retail – Afterglow Gifts</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .product-card {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid #8B0000;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      color: #cfa85c;
+    }
+
+    .product-card p {
+      color: #C0C0C0;
+    }
+
+    .price {
+      color: silver;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      padding: 10px 16px;
+      border: 2px solid #cfa85c;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .cart {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background-color: #111;
+      border: 2px solid #cfa85c;
+      color: #cfa85c;
+      padding: 8px 16px;
+      border-radius: 8px;
+      z-index: 999;
+    }
+  </style>
 </head>
 <body>
 
-   <!-- Logo Display (Optional) -->
-  <div style="text-align: center; margin-bottom: 30px;">
-    <img src="Logo_Image.jpg" alt="AfterGlow Givers Logo" 
-         style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 15px #cfa85c;">
-  </div>
- <!-- Navigation Bar (Gold background) -->
+  <!-- Cart Counter -->
+  <div class="cart">🛒 Cart: <span id="cart-count">0</span></div>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="retail.html">Retail</a>
-    <a href="#">Cart</a>
-    <a href="#">Gift card</a>
+    <a href="giftcard.html">Gift Card</a>
     <a href="#">Contact</a>
   </nav>
-  <h1 style="text-align: center;">Retail Collection</h1>
-  <h3 style="text-align: center; margin-bottom: 30px;">Luxuries You Can Gift (Or Keep 😉)</h3>
-  
-  <!-- 💘 Signature Sensual Packs -->
-  <section>
-    <span class="label">💘 Signature Sensual Packs</span>
 
-    <div class="product">
-      <h4>Midnight Pulse Massager</h4>
+  <!-- Product Grid -->
+  <div class="product-grid">
+
+    <div class="product-card">
+      <h3>Midnight Pulse Massager</h3>
       <p>High-intensity silicone vibrator for solo or couple play.</p>
+      <div class="price">R799</div>
+      <button class="button" onclick="addToCart('Midnight Pulse Massager')">Add to Cart</button>
     </div>
 
-    <div class="product">
-      <h4>Tease & Please Game Kit</h4>
+    <div class="product-card">
+      <h3>Tease & Please Game Kit</h3>
       <p>Playful dares and surprises to spice up your night.</p>
+      <div class="price">R499</div>
+      <button class="button" onclick="addToCart('Tease & Please Game Kit')">Add to Cart</button>
     </div>
 
-    <div class="product">
-      <h4>Sensual Smoke Sweets</h4>
+    <div class="product-card">
+      <h3>Sensual Smoke Sweets</h3>
       <p>THC-infused candy for relaxing pleasure.</p>
+      <div class="price">R199</div>
+      <button class="button" onclick="addToCart('Sensual Smoke Sweets')">Add to Cart</button>
     </div>
 
-    <div class="product">
-      <h4>Naughty Nights Party Pack</h4>
-      <p>Perfect for birthdays, anniversaries, or wild weekends.</p>
-    </div>
-  </section>
+  </div>
 
-  <!-- 💔 Breakup Recovery Boxes -->
-  <section>
-    <span class="label">💔 Breakup Recovery Boxes</span>
+  <!-- JavaScript for Cart -->
+  <script>
+    let cartCount = 0;
+    const cartItems = [];
 
-    <div class="product">
-      <h4>Glow Up & Move On (For Her)</h4>
-      <p>Rose vibrator, CBD gummies, affirmations, candle, wine cup & playlist QR code.</p>
-    </div>
+    function addToCart(productName) {
+      cartItems.push(productName);
+      cartCount++;
+      document.getElementById('cart-count').textContent = cartCount;
 
-    <div class="product">
-      <h4>Bounce Back Bro (For Him)</h4>
-      <p>Bullet stimulator, THC mints, flask, affirmation cards & recovery playlist QR code.</p>
-    </div>
-  </section>
-
-  <!-- 🖤 Dominatrix Collection -->
-  <section>
-    <span class="label">🖤 Dominatrix Collection</span>
-
-    <div class="product">
-      <h4>Beginner Dom Box: “Touch of Control”</h4>
-      <p>Velvet cuffs, silk scarves, blindfold, safe word cards, door sign.</p>
-    </div>
-
-    <div class="product">
-      <h4>Mistress Essentials: “Command & Conquer”</h4>
-      <p>Whip, collar & leash, wax candles, red lipstick kit, ribbon belt.</p>
-    </div>
-
-    <div class="product">
-      <h4>Scene Night Kit: “Obey Tonight”</h4>
-      <p>Riding crop, massage oil, roleplay cards, playlist, LED light.</p>
-    </div>
-
-    <div class="product">
-      <h4>Domina Body Box: “Glow & Punish”</h4>
-      <p>Body scrub & oil, lipstick, bondage scarf, scented melts, mirror cards.</p>
-    </div>
-
-    <div class="product">
-      <h4>Power Couple Set: “Switch & Seduce”</h4>
-      <p>Masks, rule card game, bubbly, decor, consent deck.</p>
-    </div>
-  </section>
+      // Optionally save to localStorage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+  </script>
 
 </body>
 </html>
