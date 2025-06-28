@@ -191,18 +191,15 @@
 </div>
 
 <script>
-  let cartCount = 0;
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  cartCount = cartItems.length;
-  document.getElementById('cart-count').textContent = cartCount;
-
-  function addToCart(productName) {
-    cartItems.push(productName);
+ <script>
+  function addToCart(name, price) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ name, price });
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    document.getElementById('cart-count').textContent = cartItems.length;
-    alert(productName + ' added to cart!');
+    alert(`${name} added to cart.`);
   }
 </script>
+
 
 </body>
 </html>
