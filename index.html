@@ -5,10 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Afterglow Givers</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Inline for layout-specific tweaks */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid #8B0000;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 270px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .navbar a {
+        display: block;
+        margin: 10px 0;
+      }
+      .grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="retail.html">Retail</a>
@@ -20,11 +60,11 @@
   <!-- Logo -->
   <div style="text-align: center; margin-bottom: 30px;">
     <img src="Logo_Image.jpg" alt="AfterGlow Givers Logo" 
-         style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 15px #cfa85c;">
+         style="max-width: 180px; border-radius: 14px; box-shadow: 0 0 15px #cfa85c;">
   </div>
 
-  <!-- Hero Section -->
-  <section style="text-align: center; padding: 40px 20px;">
+  <!-- Hero -->
+  <section class="container" style="text-align: center; padding-bottom: 40px;">
     <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Welcome to Afterglow Givers</h1>
     <p style="color: #C0C0C0; font-size: 1.2rem; margin-bottom: 30px;">
       Gifts that tease, please, and seduce.  
@@ -34,30 +74,28 @@
   </section>
 
   <!-- Featured Categories -->
-  <section style="text-align: center;">
-    <h2 style="margin-bottom: 30px;">Explore Our World</h2>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-
-      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+  <section class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">Explore Our World</h2>
+    <div class="grid">
+      <div class="card">
         <h4>💘 Signature Packs</h4>
         <p style="color: #C0C0C0;">Luxury gift boxes for pleasure and play.</p>
         <a href="retail.html" class="button">Shop Now</a>
       </div>
 
-      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+      <div class="card">
         <h4>🖤 Services</h4>
         <p style="color: #C0C0C0;">Private bookings, parties, romantic events.</p>
         <a href="#" class="button">Learn More</a>
       </div>
 
-      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+      <div class="card">
         <h4>🎓 Academy</h4>
         <p style="color: #C0C0C0;">Workshops and empowerment for sensual growth.</p>
         <a href="#" class="button">Explore</a>
       </div>
 
-      <div style="background-color: rgba(255,255,255,0.02); border: 1px solid #8B0000; padding: 20px; width: 250px; border-radius: 12px;">
+      <div class="card">
         <h4>📩 Contact</h4>
         <p style="color: #C0C0C0;">Questions? Let's connect in confidence.</p>
         <a href="#" class="button">Get in Touch</a>
@@ -70,7 +108,7 @@
     <p>&copy; 2025 Afterglow Givers. All rights reserved.</p>
   </footer>
 
-  <!-- Age Confirmation Overlay -->
+  <!-- Age Confirmation -->
   <div id="age-overlay" style="
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -126,3 +164,4 @@
 
 </body>
 </html>
+
