@@ -158,35 +158,35 @@
 
   <script>
   function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const container = document.getElementById('cart-items');
-    const totalEl = document.getElementById('cart-total');
-    container.innerHTML = '';
-    let total = 0;
+  const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  container.innerHTML = '';
 
-    if (cart.length === 0) {
-      container.innerHTML = "<p style='text-align:center;color:silver;'>Your cart is empty.</p>";
-      totalEl.textContent = '';
-      return;
-    }
+  let subtotal = 0;
+  cart.forEach((item, idx) => {
+    const priceNum = parseFloat(item.price) || 0;
+    subtotal += priceNum;
 
-    cart.forEach((item, idx) => {
-      const priceNum = parseFloat(item.price) || 0;
-      total += priceNum;
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <span>${item.name}</span>
+      <span>R${priceNum.toFixed(2)}</span>
+      <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
+    `;
+    container.appendChild(div);
+  });
 
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = 
-        <span>${item.name}</span>
-        <span>R${priceNum.toFixed(2)}</span>
-        <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
-      ;
-      container.appendChild(div);
-    });
+  const deliveryFee = 90.00;
+  const total = subtotal + deliveryFee;
 
-    totalEl.textContent = Total: R${total.toFixed(2)};
-  }
-
+  totalEl.innerHTML = `
+    <div>Subtotal: R${subtotal.toFixed(2)}</div>
+    <div>Delivery Fee: R${deliveryFee.toFixed(2)}</div>
+    <div><strong>Total: R${total.toFixed(2)}</strong></div>
+  `;
+}
   function deleteItem(index) {
     const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
     cart.splice(index, 1);
