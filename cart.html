@@ -1,115 +1,221 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart – AfterGlow Gifts</title>
+  <title>Your Cart - Afterglow Gifts</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #cfa85c;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: linear-gradient(to bottom, #000000 60%, #1a1a1a);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+      border-bottom: 2px solid #cfa85c;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+    .navbar img {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .navbar a {
+      color: #cfa85c !important;
+      background-color: transparent;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #FFD700;
+    }
+    .cart-section {
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #cfa85c;
+    }
+    .cart-items {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      color: silver;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #cfa85c;
+    }
+    .checkout {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .checkout button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      border: 2px solid #cfa85c;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .address-form {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .address-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: silver;
+    }
+    .address-form input, .address-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="navbar-left">
-      <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
+      <a href="index.html">
+        <img src="Logo_Image.jpg" alt="Afterglow Givers Logo">
+      </a>
       <a href="index.html">Home</a>
       <a href="retail.html">Retail</a>
-      <a href="delivery.html">Delivery</a>
-    </div>
-  </nav>
+            <a href="delivery.html">Delivery</a>
+      </div>
+      </nav>
 
   <section class="cart-section">
     <h1>Your Cart</h1>
     <div class="cart-items" id="cart-items"></div>
-
     <div style="text-align:center; margin-top:20px;">
-      <div style="max-width:800px; margin:20px auto; background:#111; padding:20px; border:1px solid #cfa85c; border-radius:10px;">
-        <p id="pargo-fee" style="color:#cfa85c; margin:0;">Delivery Fee: R90.00</p>
-      </div>
-    </div>
+  <a href="https://pargo.co.za/find-a-store/" target="_blank" rel="noopener" style="color:#FFD700; font-weight:bold;">
+    <div style="max-width:800px; margin:20px auto; background:#111; padding:20px; border:1px solid #cfa85c; border-radius:10px;">
+ 
+  <p id="pargo-fee" style="color:#cfa85c; margin-top:10px;">Delivery Fee: R90.00</p>
+</div>
 
+</div>
     <div class="total" id="cart-total"></div>
 
     <div class="address-form">
       <h2>Delivery Details</h2>
       <label for="name">Full Name</label>
       <input type="text" id="name" placeholder="Enter your full name">
+
       <label for="email">Email</label>
       <input type="email" id="email" placeholder="Enter your email">
+
       <label for="address">Delivery Address</label>
       <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+
       <label for="notes">Special Instructions</label>
       <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
-      <label for="pargo">Pargo Delivery Point</label>
-      <input type="text" id="pargo" placeholder="Enter your Pargo point">
+      
+         <label for="Pargo delivery">Pargo</label>
+      <input type="pargo " id="pargo" placeholder="Enter your Pargo delivery point">
     </div>
-
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
     </div>
   </section>
 
   <script>
-    const DELIVERY_FEE = 90.00;
+  function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  container.innerHTML = '';
 
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      const container = document.getElementById('cart-items');
-      const totalEl = document.getElementById('cart-total');
-      container.innerHTML = '';
+  let subtotal = 0;
+  cart.forEach((item, idx) => {
+    const priceNum = parseFloat(item.price) || 0;
+    subtotal += priceNum;
 
-      if (cart.length === 0) {
-        container.innerHTML = "<p style='text-align:center;color:silver;'>Your cart is empty.</p>";
-        totalEl.textContent = '';
-        return;
-      }
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = 
+      <span>${item.name}</span>
+      <span>R${priceNum.toFixed(2)}</span>
+      <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
+    ;
+    container.appendChild(div);
+  });
 
-      let subtotal = 0;
-      cart.forEach((item, idx) => {
-        const priceNum = parseFloat(item.price) || 0;
-        subtotal += priceNum;
+  const deliveryFee = 90.00;
+  const total = subtotal + deliveryFee;
 
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-          <span>${item.name}</span>
-          <span>R${priceNum.toFixed(2)}</span>
-          <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
-        `;
-        container.appendChild(div);
-      });
+  totalEl.innerHTML = 
+    <div>Subtotal: R${subtotal.toFixed(2)}</div>
+    <div>Delivery Fee: R${deliveryFee.toFixed(2)}</div>
+    <div><strong>Total: R${total.toFixed(2)}</strong></div>
+  ;
+}
+  function deleteItem(index) {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    renderCart();
+    updateRetailCartCount();
+  }
 
-      const total = subtotal + DELIVERY_FEE;
-      totalEl.innerHTML = `
-        <div>Subtotal: R${subtotal.toFixed(2)}</div>
-        <div>Delivery Fee: R${DELIVERY_FEE.toFixed(2)}</div>
-        <div><strong>Total: R${total.toFixed(2)}</strong></div>
-      `;
+  function updateRetailCartCount() {
+    // If retail.html is open in another tab/window, sync its cart count.
+    if (window.opener && typeof window.opener.updateCartUI === 'function') {
+      window.opener.updateCartUI();
     }
+  }
 
-    function deleteItem(index) {
-      const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('cartItems', JSON.stringify(cart));
-      renderCart();
-    }
-
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
     function checkout() {
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const address = document.getElementById('address').value;
+
       if (!name || !email || !address) {
         alert("Please fill in your name, email, and delivery address.");
         return;
       }
 
-      const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      let subtotal = 0;
-      cart.forEach(i => subtotal += parseFloat(i.price));
-      const total = (subtotal + DELIVERY_FEE).toFixed(2);
-
-      alert(`Thank you, ${name}! Your order total is R${total}.`);
+      alert("Thank you! Your order is being processed.");
     }
-
-    document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
