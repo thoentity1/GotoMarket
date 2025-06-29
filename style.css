@@ -38,7 +38,43 @@ section {
 .</div>
   <!-- other navbar items -->
 </nav>
+<style>
+  .navbar {
+    padding: 12px 24px;
+    background: linear-gradient(to bottom, #000 60%, #1a1a1a);
+    border-bottom: 2px solid #cfa85c;
+  }
+  .navbar-left {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 12px;
+    align-items: center;
+  }
+  .navbar-left a {
+    color: #cfa85c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  /* Ensures the logo (if it's first child) stretches row */
+  .navbar-left > a:first-child {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+  }
+</style>
 
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="index.html"><img src="Logo_Image.jpg" alt="Logo" style="height:60px"></a>
+    <a href="index.html">Home</a>
+    <a href="retail.html">Retail</a>
+    <a href="cart.html">Cart</a>
+    <a href="giftcard.html">Gift Card</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
+</nav>
 <style>
   .navbar .navbar-left {
     display: grid;
