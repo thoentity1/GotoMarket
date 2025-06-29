@@ -35,7 +35,20 @@ section {
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 10px rgba(207, 168, 92, 0.3); /* subtle gold glow */
 }
+.navbar .navbar-left {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping onto new lines */  /* :contentReference[oaicite:1]{index=1} */
+}
 
+.navbar .navbar-left a {
+  flex: 0 0 auto;
+  margin-right: 12px;
+}
+
+/* Force a line break after the 3rd link */
+.navbar .navbar-left a:nth-child(3) {
+  flex-basis: 100%;  /* makes the 3rd link take full width, breaking to next line */  /* :contentReference[oaicite:2]{index=2} */
+}
 .navbar a {
   color: #000000; /* Black text on gold background */
   text-decoration: none;
