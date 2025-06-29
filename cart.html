@@ -151,26 +151,53 @@
   </section>
 
   <script>
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    document.getElementById('cart-count').textContent = cartItems.length;
-
-    const itemsContainer = document.getElementById("cart-items");
-    const totalDisplay = document.getElementById("cart-total");
-
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const container = document.getElementById('cart-items');
+    const totalEl = document.getElementById('cart-total');
+    container.innerHTML = '';
     let total = 0;
-    if (cartItems.length === 0) {
-      itemsContainer.innerHTML = "<p style='text-align: center; color: silver;'>Your cart is empty.</p>";
-    } else {
-      cartItems.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `<span>${item.name}</span><span>R${item.price}</span>`;
-        itemsContainer.appendChild(div);
-        total += parseFloat(item.price);
-      });
-      totalDisplay.textContent = `Total: R${total.toFixed(2)}`;
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p style='text-align:center;color:silver;'>Your cart is empty.</p>";
+      totalEl.textContent = '';
+      return;
     }
 
+    cart.forEach((item, idx) => {
+      const priceNum = parseFloat(item.price) || 0;
+      total += priceNum;
+
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <span>${item.name}</span>
+        <span>R${priceNum.toFixed(2)}</span>
+        <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+
+    totalEl.textContent = `Total: R${total.toFixed(2)}`;
+  }
+
+  function deleteItem(index) {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    renderCart();
+    updateRetailCartCount();
+  }
+
+  function updateRetailCartCount() {
+    // If retail.html is open in another tab/window, sync its cart count.
+    if (window.opener && typeof window.opener.updateCartUI === 'function') {
+      window.opener.updateCartUI();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
     function checkout() {
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
