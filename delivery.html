@@ -92,13 +92,7 @@
     <h1>Pargo Click‑&‑Collect Delivery</h1>
     <p>AfterGlow Gifts will prepare your order and hand it over to Pargo. Pargo then delivers it to your chosen collection point, making pickup easy and convenient for you.</p>
 
-    <h2>Select Your Pargo Point</h2>
-    <label for="pargo-point">Choose pickup location:</label>
-    <select id="pargo-point">
-      <option value="">-- Choose Pargo point --</option>
-      <!-- Points populated via JavaScript -->
-    </select>
-    <p><strong>Flat-rate collection fee:</strong> R90 per order</p>
+        <p><strong>Flat-rate collection fee:</strong> R90 per order</p>
 
     <h2>How It Works</h2>
     <ol>
@@ -121,15 +115,7 @@
     <p>For assistance, track your parcel using Pargo’s <a href="https://pargo.co.za/track-trace/">Track & Trace</a> or <a href="mailto:info@afterglowgifts.co.za">contact us</a>.</p>
   </div>
 
-  <script>
-    // Example Pargo points; replace with real API data when available
-    const points = [
-      { id: 'spar123', name: 'Spar Rivonia, JHB' },
-      { id: 'clicks456', name: 'Clicks Rosebank, JHB' },
-      { id: 'caltex789', name: 'Caltex Morningside, JHB' }
-    ];
-    const sel = document.getElementById('pargo-point');
-    points.forEach(p => {
+ 
       const o = document.createElement('option');
       o.value = p.id;
       o.textContent = p.name;
