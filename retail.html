@@ -202,89 +202,56 @@
 </div>
 
 <script>
+  // Adds (name + price) to localStorage
   function addToCart(name) {
-    // Get the clicked button
     const btn = event.currentTarget;
-    // Find its parent .product-card
     const card = btn.closest('.product-card');
-    if (!card) return console.error('No product card found!');
-
-    // Read and parse price (e.g., "R799")
     const priceText = card.querySelector('.price')?.textContent;
     const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
-
-    if (isNaN(price)) {
-      console.error('Invalid or missing price:', priceText);
-      return;
-    }
-
-    // Save to localStorage
-    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cartItems', JSON.stringify(cart));
-
-    // Update cart count and alert
-    updateCartCount();
-    alert(`${name} (R${price.toFixed(2)}) added to cart.`);
-  }
-
-  function updateCartCount() {
-    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
-    document.getElementById('cart-count').textContent = count;
-  }
-
-  document.addEventListener('DOMContentLoaded', updateCartCount);
- <script>
-  // Add item by extracting price from the clicked card
-  function addToCart(name) {
-    const btn = event.currentTarget;
-    const card = btn.closest('.product-card');
-    const priceText = card.querySelector('.price').textContent;
-    const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
-
-    if (isNaN(price)) {
-      console.error('Invalid price for', name, priceText);
-      return;
-    }
+    if (isNaN(price)) return console.error('Invalid price:', priceText);
 
     const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
     cart.push({ name, price });
     localStorage.setItem('cartItems', JSON.stringify(cart));
 
-    alert(`${name} (R${price.toFixed(2)}) added to cart.`);
-    updateCartCount();
+    updateCartUI();
+    alert(`${name} (R${price.toFixed(2)}) added.`);
   }
 
-  // Remove one occurrence of item by name
+  // Removes ONE matching item from the cart
   function deleteFromCart(name) {
     const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
     const idx = cart.findIndex(item => item.name === name);
     if (idx >= 0) {
-      cart.splice(idx, 1);
+      cart.splice(idx,1);
       localStorage.setItem('cartItems', JSON.stringify(cart));
+      updateCartUI();
       alert(`${name} removed from cart.`);
-      updateCartCount();
     } else {
       alert(`${name} not found in cart.`);
     }
   }
 
-  // Clear entire cart
+  // Clears entire cart
   function clearCart() {
     localStorage.removeItem('cartItems');
+    updateCartUI();
     alert('Cart cleared.');
-    updateCartCount();
   }
 
-  // Update the cart count badge
-  function updateCartCount() {
-    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
+  // Updates cart count and total in navbar
+  function updateCartUI() {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const count = cart.length;
+    const total = cart.reduce((s, i) => s + i.price, 0);
     document.getElementById('cart-count').textContent = count;
+    // Optional: show total in navbar if you add a <span id="cart-total"> somewhere
+    const totalEl = document.getElementById('cart-total');
+    if (totalEl) totalEl.textContent = total.toFixed(2);
   }
 
-  // Initialize badge and wire Clear Cart button
   document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
+    updateCartUI();
     const clearBtn = document.getElementById('clear-cart');
     if (clearBtn) clearBtn.addEventListener('click', clearCart);
   });
