@@ -234,6 +234,45 @@
   }
 
   document.addEventListener('DOMContentLoaded', updateCartCount);
+  <script>
+  function addToCart(name) {
+    const btn = event.currentTarget;
+    const priceText = btn.closest('.product-card').querySelector('.price').textContent;
+    const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    updateCartCount();
+    alert(`${name} (R${price.toFixed(2)}) added to cart.`);
+  }
+
+  function deleteFromCart(name) {
+    let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const index = cart.findIndex(item => item.name === name);
+    if (index > -1) {
+      cart.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(cart));
+      updateCartCount();
+      alert(`${name} removed from cart.`);
+    } else {
+      alert(`${name} not found in cart.`);
+    }
+  }
+
+  document.getElementById('clear-cart').addEventListener('click', () => {
+    localStorage.removeItem('cartItems');  // clears entire cart :contentReference[oaicite:4]{index=4}
+    updateCartCount();
+    alert('Cart has been cleared.');
+  });
+
+  function updateCartCount() {
+    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
+    document.getElementById('cart-count').textContent = count;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
 </script>
 
 
