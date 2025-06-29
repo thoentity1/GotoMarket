@@ -190,34 +190,38 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const itemsContainer = document.getElementById('cart-items');
-    const totalEl = document.getElementById('cart-total');
-    let total = 0;
+  function addToCart(name) {
+    // Get the clicked button
+    const btn = event.currentTarget;
+    // Find its parent .product-card
+    const card = btn.closest('.product-card');
+    if (!card) return console.error('No product card found!');
 
-    if (cart.length === 0) {
-      itemsContainer.innerHTML = "<p style='text-align:center;color:silver;'>Your cart is empty.</p>";
-      totalEl.textContent = '';
+    // Read and parse price (e.g., "R799")
+    const priceText = card.querySelector('.price')?.textContent;
+    const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+
+    if (isNaN(price)) {
+      console.error('Invalid or missing price:', priceText);
       return;
     }
 
-    cart.forEach(item => {
-      const priceNum = parseFloat(item.price);
-      total += isNaN(priceNum) ? 0 : priceNum;
+    // Save to localStorage
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cartItems', JSON.stringify(cart));
 
-      const div = document.createElement('div');
-      <div class="cart-items" id="cart-items"></div>
-<div class="total" id="cart-total"></div>;
-      div.innerHTML = `
-        <span>${item.name}</span>
-        <span>R${priceNum.toFixed(2)}</span>
-      `;
-      itemsContainer.appendChild(div);
-    });
+    // Update cart count and alert
+    updateCartCount();
+    alert(`${name} (R${price.toFixed(2)}) added to cart.`);
+  }
 
-    totalEl.textContent = `Total: R${total.toFixed(2)}`;
-  });
+  function updateCartCount() {
+    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
+    document.getElementById('cart-count').textContent = count;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
 </script>
 
 
