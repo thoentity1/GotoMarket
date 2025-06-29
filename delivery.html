@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background-color: #000;
+      background: #000;
       color: #cfa85c;
       font-family: Arial, sans-serif;
       margin: 0;
@@ -18,157 +18,78 @@
       margin: auto;
     }
     h1, h2 {
-      color: #cfa85c;
       text-align: center;
+      color: #cfa85c;
     }
     p, li {
       color: silver;
       line-height: 1.6;
     }
-    ul {
-      margin-left: 20px;
-    }
-    a {
-      color: #FFD700;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
-  <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retail - Afterglow Gifts</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .section-heading {
-      color: #cfa85c;
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1.8rem;
-      border-bottom: 1px solid #8B0000;
-      padding-bottom: 10px;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-    }
-    .product-card {
-      background-color: rgba(255,255,255,0.02);
-      border: 1px solid #8B0000;
-      padding: 15px;
-      width: 260px;
-      text-align: center;
-      border-radius: 10px;
-    }
-    .product-card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .product-card h3 {
-      color: #cfa85c;
-    }
-    .product-card p {
-      color: #C0C0C0;
-    }
-    .price {
-      color: silver;
-      font-weight: bold;
+    ul { margin-left: 20px; }
+    a { color: #FFD700; text-decoration: none; font-weight: bold; }
+    select {
+      width: 100%;
+      padding: 8px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 6px;
       margin: 10px 0;
     }
-    .button {
-      background-color: #8B0000;
-      color: #cfa85c;
-      padding: 8px 16px;
-      border: 2px solid #cfa85c;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background-color: #000;
-      border-bottom: 1px solid #8B0000;
-    }
-    .navbar a {
-      color: #cfa85c;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .navbar img {
-      height: 50px;
-      border-radius: 8px;
-    }
-    .cart {
-      background-color: #111;
-      border: 2px solid #cfa85c;
-      color: #cfa85c;
-      padding: 8px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
   </style>
-</head>
-<body>
-
-<!-- Navigation with Logo and Cart -->
-<nav class="navbar">
-  <a href="index.html">
-    <img src="Logo_Image.jpg" alt="Afterglow Givers Logo">
-  </a>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="retail.html">Retail</a>
-    <a href="cart.html">Cart</a>
-    <a href="giftcard.html">Gift Card</a>
-    <a href="#">Contact</a>
-  </div>
-  <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
-  <button id="clear-cart" style="margin-left:10px; background:#8B0000; color:#cfa85c; border:2px solid #cfa85c; border-radius:6px; padding:8px;">Clear Cart</button>
-  </nav>
 </head>
 <body>
   <div class="content">
-    <h1>Delivery</h1>
+    <h1>Pargo Click‑&‑Collect Delivery</h1>
+    <p>We now offer **Pargo Click‑&‑Collect** as our exclusive delivery option. Choose a convenient pickup point that suits your schedule and location:</p>
 
-    <p>All orders are delivered door-to-door by <strong>Pingo</strong> or <strong>Courier Guy</strong>. No free delivery option is available.</p>
-     <h2 style="color:#cfa85c; text-align:center;">Pargo Collection</h2>
-  <label for="pargo-point" style="color:silver;">Select your preferred Pargo point:</label>
-  <select id="pargo-point" style="width:100%; padding:8px; background:#222; color:#fff; border:1px solid #333; border-radius:6px;">
-    <option value="">-- Choose Pargo point --</option>
-  </select>
+    <h2>Pargo Collection</h2>
+    <label for="pargo-point">Select your preferred Pargo point:</label>
+    <select id="pargo-point">
+      <option value="">-- Choose Pargo point --</option>
+      <!-- dynamically filled -->
+    </select>
+    <p style="margin-top:10px;"><strong>Flat-rate fee:</strong> R90 per order</p>
 
-    <p><strong>Courier options:</strong></p>
+    <h2>Why Pargo?</h2>
     <ul>
-      <li><strong>Pingo:</strong> a fast, reliable on‑demand delivery partner, offering 1‑hour or scheduled deliveries :contentReference[oaicite:1]{index=1}</li>
-      <li><strong>Courier Guy:</strong> national courier network with door‑to‑door, locker and kiosk options :contentReference[oaicite:2]{index=2}</li>
+      <li>Access to over 4,000 pickup points nationwide :contentReference[oaicite:1]{index=1}.</li>
+      <li>Average delivery time: ~1.25 days :contentReference[oaicite:2]{index=2}.</li>
+      <li>Notification via SMS & email when your parcel arrives :contentReference[oaicite:3]{index=3}.</li>
+      <li>Pick up anytime within 8 days using your Pargo code and ID :contentReference[oaicite:4]{index=4}.</li>
+      <li>Proven 100% first-attempt delivery rate :contentReference[oaicite:5]{index=5}.</li>
     </ul>
 
-    <p>Please note that:</p>
-    <ul>
-      <li>Deliveries do not occur on weekends or public holidays.</li>
-      <li>Pingo and Courier Guy collect parcels from our warehouse same day, and you’ll receive your waybill by email.</li>
-      <li>All parcels are packaged discreetly—plain brown boxes with unbranded waybills and no reference to AfterGlow Gifts.</li>
-      <li>Standard delivery takes <strong>3–5 working days</strong>; remote areas may take <strong>1–2 extra days</strong>.</li>
-      <li>Orders placed over weekends or on public holidays will be processed the next working day.</li>
-      <li>Orders must be delivered within 24 hours of collection or reported. Please email <a href="mailto:info@afterglowgifts.co.za">info@afterglowgifts.co.za</a>. Call us on 087 809 2500 if you don’t receive a response within 24 hours.</li>
-    </ul>
+    <h2>How It Works</h2>
+    <ol>
+      <li>At checkout, select your preferred Pargo point from the dropdown.</li>
+      <li>Pargo collects from our warehouse and sends your parcel.</li>
+      <li>You’ll receive an SMS & email with a unique Pargo code once it arrives at your pickup point.</li>
+      <li>Present your ID and code at the pickup location (within 8 days) to collect.</li>
+    </ol>
 
-    <h2>Delivery Rates</h2>
-    <p><strong>Flat-rate courier fee:</strong> R90 per order (regardless of order value).</p>
-
-    <p>If you have any delivery questions or need tracking help, feel free to <a href="mailto:info@afterglowgifts.co.za">email us</a>.</p>
+    <p>Need help tracking your parcel? Visit Pargo's <a href="https://pargo.co.za/track-trace/">Track & Trace</a>.</p>
   </div>
+
+  <script>
+    // Placeholder: ideally fetch from Pargo API (requires credentials)
+    const points = [
+      { id: 'spar123', name: 'Spar Rivonia, JHB' },
+      { id: 'clicks456', name: 'Clicks Rosebank, JHB' },
+      { id: 'caltex789', name: 'Caltex Morningside, JHB' }
+    ];
+    const sel = document.getElementById('pargo-point');
+    points.forEach(p => {
+      const o = document.createElement('option');
+      o.value = p.id;
+      o.textContent = p.name;
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', e => {
+      alert(`You selected: ${e.target.selectedOptions[0].text}`);
+    });
+  </script>
 </body>
 </html>
+
 
