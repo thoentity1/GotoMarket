@@ -36,10 +36,10 @@
       <input type="email" id="email" placeholder="Enter your email">
       <label for="address">Delivery Address</label>
       <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
-      <label for="pargo-point">Pargo Pickup Point</label>
-      <input type="text" id="pargo-point" placeholder="Enter your Pargo point">
       <label for="notes">Special Instructions</label>
       <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+      <label for="pargo">Pargo Delivery Point</label>
+      <input type="text" id="pargo" placeholder="Enter your Pargo point">
     </div>
 
     <div class="checkout">
@@ -102,12 +102,15 @@
       }
 
       const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-      const subtotal = cart.reduce((sum, i) => sum + parseFloat(i.price), 0);
+      let subtotal = 0;
+      cart.forEach(i => subtotal += parseFloat(i.price));
       const total = (subtotal + DELIVERY_FEE).toFixed(2);
-      alert(`Thanks ${name}! Your order total is R${total}. We'll process it soon.`);
+
+      alert(`Thank you, ${name}! Your order total is R${total}.`);
     }
 
     document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
+
