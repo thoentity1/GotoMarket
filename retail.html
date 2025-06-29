@@ -190,14 +190,22 @@
 </div>
 
 <script>
- function addToCart(name, price) {
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  cartItems.push({ name, price });
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  alert(${name} added to cart.);
-  updateCartCount();
-}
- <script> 
+  function addToCart(name, price) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ name, price });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    alert(`${name} added to cart.`);  // <-- Use backticks and ${}
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const count = (JSON.parse(localStorage.getItem('cartItems')) || []).length;
+    document.getElementById('cart-count').textContent = count;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
 
 
 </body>
