@@ -83,18 +83,14 @@ section {
     align-items: center;
   }
 </style>
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  padding-top: 66.66%; /* Adjust for your desired aspect ratio */
-  overflow: hidden;
-}
 .slideshow-container img {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
 }
 
 .navbar .navbar-left a {
