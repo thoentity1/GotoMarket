@@ -21,16 +21,19 @@
       background: #000;
       border-bottom: 2px solid #8B0000;
     }
+
     .navbar a {
       color: #cfa85c;
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
+
     .navbar img {
       height: 50px;
       border-radius: 8px;
     }
+
     .cart {
       background: #111;
       border: 2px solid #cfa85c;
@@ -90,13 +93,44 @@
       width: 100%;
     }
 
-    /* Cart clear button on navbar */
     #clear-cart {
       margin-left: 10px;
-      background: #8B0000;
-      color: #FFD700;
-      border: 2px solid #FFD700;
     }
+
+    /* Carousel */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: none;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #FFD700;
+      padding: 6px 12px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .prev { left: 8px; }
+    .next { right: 8px; }
   </style>
 </head>
 <body>
@@ -120,8 +154,15 @@
   <!-- Signature Sensual Packs -->
   <h2 class="section-heading">💘 Signature Sensual Packs</h2>
   <div class="product-grid">
+    <!-- Product 1 with Carousel -->
     <div class="product-card">
-      <img src="images/AfterGlow_Massage_Pulse.jpg" alt="Midnight Pulse Massager Pack">
+      <div class="slideshow-container">
+        <img class="slides slide-1" src="images/AfterGlow_Massage_Pulse.jpg" alt="Pulse">
+        <img class="slides slide-1" src="images/AfterGlow_Massage_Candle.jpg" alt="Candle">
+        <img class="slides slide-1" src="images/AfterGlow_Snack_Pack_.jpg" alt="Snack">
+        <a class="prev" onclick="plusSlides(-1, 1)">❮</a>
+        <a class="next" onclick="plusSlides(1, 1)">❯</a>
+      </div>
       <h3>Midnight Pulse Massager Pack</h3>
       <p>High‑intensity vibe, Massage candle & Snack bundle.</p>
       <div class="price">R499.00</div>
@@ -129,8 +170,14 @@
       <button class="button" onclick="deleteFromCart('Midnight Pulse Massager Pack')">Delete</button>
     </div>
 
+    <!-- Product 2 with Carousel -->
     <div class="product-card">
-      <img src="images/Couple Tease and Please Game Truth.jpg" alt="Tease & Please Game Kit">
+      <div class="slideshow-container">
+        <img class="slides slide-2" src="images/Couple Tease and Please Game Truth.jpg" alt="Game Truth">
+        <img class="slides slide-2" src="images/Couple Tease and Please Toys.jpg" alt="Game Toys">
+        <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
+        <a class="next" onclick="plusSlides(1, 2)">❯</a>
+      </div>
       <h3>Tease &amp; Please Game Kit</h3>
       <p>Playful dares and surprises to spice up your night.</p>
       <div class="price">R499.00</div>
@@ -138,6 +185,7 @@
       <button class="button" onclick="deleteFromCart('Tease & Please Game Kit')">Delete</button>
     </div>
 
+    <!-- Other Products -->
     <div class="product-card">
       <img src="images/sensual-sweets.jpg" alt="Sensual Sweets">
       <h3>Sensual Sweets</h3>
@@ -182,11 +230,10 @@
   <!-- Dominatrix Collection -->
   <h2 class="section-heading">🖤 Dominatrix Collection Coming Soon</h2>
   <div class="product-grid">
-    <!-- Add future product cards here -->
+    <!-- Future products -->
   </div>
 
   <script>
-    // Add item to cart
     function addToCart(name) {
       const btn = event.currentTarget;
       const card = btn.closest('.product-card');
@@ -197,7 +244,6 @@
       updateCartUI();
     }
 
-    // Delete item from cart
     function deleteFromCart(name) {
       let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
       const idx = cart.findIndex(i => i.name === name);
@@ -209,27 +255,42 @@
       }
     }
 
-    // Clear cart
     function clearCart() {
       localStorage.removeItem('cartItems');
       updateCartUI();
       alert('Cart cleared.');
     }
 
-    // Update cart count in navbar
     function updateCartUI() {
       const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
       document.getElementById('cart-count').textContent = cart.length;
     }
 
-    // Initialize
+    // Carousel Logic
+    const slideIndices = {};
+    function plusSlides(n, group) {
+      const className = 'slide-' + group;
+      const slides = document.getElementsByClassName(className);
+      if (!slideIndices[group]) slideIndices[group] = 1;
+      slideIndices[group] += n;
+      if (slideIndices[group] > slides.length) slideIndices[group] = 1;
+      if (slideIndices[group] < 1) slideIndices[group] = slides.length;
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndices[group] - 1].style.display = "block";
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       updateCartUI();
       document.getElementById('clear-cart').addEventListener('click', clearCart);
+      plusSlides(0, 1);
+      plusSlides(0, 2);
     });
   </script>
 </body>
 </html>
+
 
 
 
