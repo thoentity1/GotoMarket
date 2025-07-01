@@ -169,4 +169,27 @@ section {
   background-color: #cfa85c;
   color: black;
 }
+/* Change "Remove" button */
+.cart-item button {
+  background-color: red !important;
+  color: gold !important;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Pargo input field style */
+.address-form input#pargo {
+  background-color: #8B0000; /* deep red background */
+  color: #FFD700;           /* gold text */
+  border: 1px solid #FFD700;
+}
+
+/* Checkout button style */
+.checkout button {
+  background-color: red !important;
+  color: gold !important;
+  border: 2px solid gold;
+}
 
