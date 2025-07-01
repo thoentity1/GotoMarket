@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Cart – Afterglow Gifts</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- No changes to your existing CSS here -->
 </head>
 <body>
-
-  <!-- Navbar (matches your current dark/gold style) -->
   <nav class="navbar">
     <div class="navbar-left">
       <a href="index.html">
@@ -20,26 +19,20 @@
     </div>
   </nav>
 
-  <!-- Main Cart Section -->
   <section class="cart-section">
     <h1>Your Cart</h1>
-
-    <!-- Will insert cart items here -->
     <div id="cart-items" class="cart-items"></div>
 
-    <!-- Delivery Fee Panel -->
     <div style="text-align:center; margin:20px 0;">
-      <a href="https://pargo.co.za/find-a-store/" target="_blank" rel="noopener">
+      <a href="https://pargo.co.za/find-a-store/" target="_blank">
         <div class="cart-items" style="max-width:800px; margin:auto; padding:20px;">
           <p id="pargo-fee">Delivery Fee: R90.00</p>
         </div>
       </a>
     </div>
 
-    <!-- Totals -->
     <div id="cart-total" class="total"></div>
 
-    <!-- Delivery Details Form -->
     <div class="address-form">
       <h2>Delivery Details</h2>
       <label>Full Name</label>
@@ -50,17 +43,15 @@
       <textarea id="address" rows="3" placeholder="Street, suburb, city, postal code"></textarea>
       <label>Special Instructions</label>
       <textarea id="notes" rows="2" placeholder="Optional notes"></textarea>
-      <label>Pargo Point</label>
+      <label>Pargo Collection Point</label>
       <input type="text" id="pargo" placeholder="e.g. Spar Rivonia, JHB">
     </div>
 
-    <!-- Checkout Button -->
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
     </div>
   </section>
 
-  <!-- Script for functionality -->
   <script>
     const DELIVERY_FEE = 90.00;
 
@@ -110,12 +101,10 @@
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const address = document.getElementById('address').value.trim();
-
       if (!name || !email || !address) {
-        alert("Please fill in Name, Email & Address.");
+        alert("Please complete all required fields.");
         return;
       }
-
       alert("Thank you! Your order is being processed.");
       localStorage.removeItem('cartItems');
       renderCart();
