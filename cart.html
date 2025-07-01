@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Cart – Afterglow Gifts</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Add any minor overrides here if needed */
-  </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar (matches your current dark/gold style) -->
   <nav class="navbar">
     <div class="navbar-left">
       <a href="index.html">
@@ -23,14 +20,14 @@
     </div>
   </nav>
 
-  <!-- Cart Content -->
+  <!-- Main Cart Section -->
   <section class="cart-section">
     <h1>Your Cart</h1>
 
-    <!-- Cart Items -->
+    <!-- Will insert cart items here -->
     <div id="cart-items" class="cart-items"></div>
 
-    <!-- Delivery Notice -->
+    <!-- Delivery Fee Panel -->
     <div style="text-align:center; margin:20px 0;">
       <a href="https://pargo.co.za/find-a-store/" target="_blank" rel="noopener">
         <div class="cart-items" style="max-width:800px; margin:auto; padding:20px;">
@@ -42,7 +39,7 @@
     <!-- Totals -->
     <div id="cart-total" class="total"></div>
 
-    <!-- Delivery Form -->
+    <!-- Delivery Details Form -->
     <div class="address-form">
       <h2>Delivery Details</h2>
       <label>Full Name</label>
@@ -57,13 +54,13 @@
       <input type="text" id="pargo" placeholder="e.g. Spar Rivonia, JHB">
     </div>
 
-    <!-- Checkout -->
+    <!-- Checkout Button -->
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
     </div>
   </section>
 
-  <!-- Script Logic -->
+  <!-- Script for functionality -->
   <script>
     const DELIVERY_FEE = 90.00;
 
@@ -128,4 +125,5 @@
   </script>
 </body>
 </html>
+
 
