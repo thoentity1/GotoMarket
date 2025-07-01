@@ -12,6 +12,7 @@
       background-color: #000;
       color: #cfa85c;
     }
+    /* Navbar */
     nav.navbar {
       display: flex;
       align-items: center;
@@ -19,16 +20,12 @@
       padding: 12px 0;
       background-color: #111;
       border-bottom: 2px solid #cfa85c;
-      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
     }
     .nav-left, .nav-right {
       flex: 1;
       display: flex;
       justify-content: center;
       gap: 24px;
-    }
-    .nav-center {
-      flex: 0;
     }
     .nav-center img {
       max-width: 150px;
@@ -46,7 +43,65 @@
     .navbar a:hover {
       color: #FFD700;
     }
-    /* Cart styles remain the same as before */
+    /* Cart section and form */
+    .cart-section { padding: 40px 20px; }
+    h1 { text-align: center; color: #cfa85c; margin-bottom: 30px; }
+    .cart-items {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      color: silver;
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #cfa85c;
+    }
+    .checkout { text-align: center; margin-top: 30px; }
+    .checkout button {
+      background-color: #8B0000;
+      color: #cfa85c;
+      border: 2px solid #cfa85c;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .address-form {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #cfa85c;
+    }
+    .address-form label {
+      display: block;
+      margin-bottom: 8px;
+      color: silver;
+      font-weight: bold;
+    }
+    .address-form input,
+    .address-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -70,6 +125,7 @@
   <section class="cart-section">
     <h1>Your Cart</h1>
     <div id="cart-items" class="cart-items"></div>
+
     <div style="text-align:center; margin-top:20px;">
       <a href="https://pargo.co.za/find-a-store/" target="_blank">
         <div class="cart-items" style="max-width:800px; margin:20px auto;">
@@ -77,9 +133,26 @@
         </div>
       </a>
     </div>
+
     <div id="cart-total" class="total"></div>
 
-    <!-- Delivery details form here... -->
+    <div class="address-form">
+      <h2>Delivery Details</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+
+      <label for="notes">Special Instructions</label>
+      <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+
+      <label for="pargo">Pargo Point</label>
+      <input type="text" id="pargo" placeholder="Enter your Pargo collection point">
+    </div>
 
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
@@ -102,7 +175,7 @@
       }
 
       let subtotal = 0;
-      cart.forEach((item, idx) => {
+      cart.forEach((item, i) => {
         const price = parseFloat(item.price) || 0;
         subtotal += price;
         const div = document.createElement('div');
@@ -110,7 +183,7 @@
         div.innerHTML = `
           <span>${item.name}</span>
           <span>R${price.toFixed(2)}</span>
-          <button class="delete-btn" onclick="deleteItem(${idx})">Remove</button>
+          <button onclick="deleteItem(${i})">Remove</button>
         `;
         container.appendChild(div);
       });
@@ -134,19 +207,8 @@
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const address = document.getElementById('address').value;
-      if (!name || !email || !address) {
-        alert("Please fill in all required fields.");
-        return;
-      }
-      alert("Thanks! Your order is being processed.");
-      localStorage.removeItem('cartItems');
-      renderCart();
-    }
+      if (!name || !email ||
 
-    document.addEventListener('DOMContentLoaded', renderCart);
-  </script>
-</body>
-</html>
 
 
 
