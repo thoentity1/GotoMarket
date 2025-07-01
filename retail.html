@@ -214,14 +214,16 @@
 
     /* Cart functions (add/delete/clear/update) */
     function addToCart(name) {
-      const card = event.currentTarget.closest('.product-card');
-      const price = parseFloat(card.querySelector('.price').textContent.replace(/[^\d.]/g, ''));
-      let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cart.push({ name, price });
-      localStorage.setItem('cartItems', JSON.stringify(cart));
-      updateCartUI();
-      alert(`${name} added.`);
-    }
+  const btn = event.currentTarget;
+  const card = btn.closest('.product-card');
+  const price = parseFloat(card.querySelector('.price').textContent.replace(/[^\d.]/g, ''));
+  const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  cart.push({ name, price });
+  localStorage.setItem('cartItems', JSON.stringify(cart));
+  updateCartUI();
+  console.log('Added:', name, price, 'cart now:', cart);
+}
+
     function deleteFromCart(name) {
       let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
       const idx = cart.findIndex(i => i.name === name);
