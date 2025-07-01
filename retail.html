@@ -1,59 +1,236 @@
-<!-- Signature Sensual Packs -->
-<h2 class="section-heading">💘 Signature Sensual Packs</h2>
-<div class="product-grid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail – AfterGlow Gifts</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #cfa85c;
+    }
 
-  <!-- Product 1 -->
-  <div class="product-card">
-    <div class="slideshow-container">
-      <div class="mySlides"><img src="images/AfterGlow_Massage_Pulse.jpg" alt="Pulse Massager"></div>
-      <div class="mySlides"><img src="images/AfterGlow_Massage_Candle.jpg" alt="Massage Candle"></div>
-      <div class="mySlides"><img src="images/AfterGlow_Snack_Pack_.jpg" alt="Snack Pack"></div>
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #000;
+      border-bottom: 2px solid #8B0000;
+    }
+    .navbar a {
+      color: #cfa85c;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar img {
+      height: 50px;
+      border-radius: 8px;
+    }
+    .cart {
+      background: #111;
+      border: 2px solid #cfa85c;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #8B0000;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px 40px;
+    }
+
+    .product-card {
+      background: #111;
+      border: 1px solid #8B0000;
+      border-radius: 10px;
+      width: 260px;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: silver;
+      margin-top: auto;
+    }
+
+    .button {
+      background: #8B0000;
+      color: #FFD700;
+      padding: 8px 16px;
+      border: 2px solid #FFD700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    /* Cart clear button on navbar */
+    #clear-cart {
+      margin-left: 10px;
+      background: #8B0000;
+      color: #FFD700;
+      border: 2px solid #FFD700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="retail.html">Retail</a>
+      <a href="cart.html">Cart</a>
+      <a href="giftcard.html">Gift Card</a>
+      <a href="#">Contact</a>
     </div>
-    <h3>Midnight Pulse Massager Pack</h3>
-    <p>High‑intensity vibe, Massage candle & Snack bundle.</p>
-    <div class="price">R499.00</div>
-    <button class="button" onclick="addToCart('Midnight Pulse Massager Pack')">Add to Cart</button>
-    <button class="button" onclick="deleteFromCart('Midnight Pulse Massager Pack')">Delete</button>
-  </div>
-
-  <!-- Product 2 -->
-  <div class="product-card">
-    <div class="slideshow-container">
-      <div class="mySlides"><img src="images/Couple Tease and Please Game Truth.jpg" alt="Tease & Please Game Slide 1"></div>
-      <div class="mySlides"><img src="images/Couple Tease and Please Toys.jpg" alt="Tease & Please Game Slide 2"></div>
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
+    <div>
+      <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
+      <button id="clear-cart" class="button">Clear Cart</button>
     </div>
-    <h3>Tease &amp; Please Game Kit</h3>
-    <p>Playful dares and surprises to spice up your night.</p>
-    <div class="price">R499.00</div>
-    <button class="button" onclick="addToCart('Tease & Please Game Kit')">Add to Cart</button>
-    <button class="button" onclick="deleteFromCart('Tease & Please Game Kit')">Delete</button>
+  </nav>
+
+  <!-- Signature Sensual Packs -->
+  <h2 class="section-heading">💘 Signature Sensual Packs</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/AfterGlow_Massage_Pulse.jpg" alt="Midnight Pulse Massager Pack">
+      <h3>Midnight Pulse Massager Pack</h3>
+      <p>High‑intensity vibe, Massage candle & Snack bundle.</p>
+      <div class="price">R499.00</div>
+      <button class="button" onclick="addToCart('Midnight Pulse Massager Pack')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Midnight Pulse Massager Pack')">Delete</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/Couple Tease and Please Game Truth.jpg" alt="Tease & Please Game Kit">
+      <h3>Tease &amp; Please Game Kit</h3>
+      <p>Playful dares and surprises to spice up your night.</p>
+      <div class="price">R499.00</div>
+      <button class="button" onclick="addToCart('Tease & Please Game Kit')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Tease & Please Game Kit')">Delete</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sensual-sweets.jpg" alt="Sensual Sweets">
+      <h3>Sensual Sweets</h3>
+      <p>Candy for relaxing pleasure.</p>
+      <div class="price">R199.00</div>
+      <button class="button" onclick="addToCart('Sensual Sweets')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Sensual Sweets')">Delete</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/naughty-nights.jpg" alt="Naughty Nights Party Pack">
+      <h3>Surprise Naughty Nights Party Pack</h3>
+      <p>Perfect for birthdays, anniversaries or wild weekends.</p>
+      <div class="price">R899.00</div>
+      <button class="button" onclick="addToCart('Naughty Nights Party Pack')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Naughty Nights Party Pack')">Delete</button>
+    </div>
   </div>
 
-  <!-- Product 3 -->
-  <div class="product-card">
-    <img src="images/sensual-sweets.jpg" alt="Sensual Sweets">
-    <h3>Sensual Sweets</h3>
-    <p>Candy for relaxing pleasure.</p>
-    <div class="price">R199.00</div>
-    <button class="button" onclick="addToCart('Sensual Sweets')">Add to Cart</button>
-    <button class="button" onclick="deleteFromCart('Sensual Sweets')">Delete</button>
+  <!-- Breakup Recovery Boxes -->
+  <h2 class="section-heading">💔 Breakup Recovery Boxes</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/glow-up-box.jpg" alt="Glow Up & Move On">
+      <h3>Glow Up & Move On (For Her)</h3>
+      <p>Rose vibe Waterproof, Gummies and Smoothies, Candle, Bath Oil & Playlist QR Code.</p>
+      <div class="price">R599.00</div>
+      <button class="button" onclick="addToCart('Glow Up & Move On')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Glow Up & Move On')">Delete</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/bounce-back-bro.jpg" alt="Bounce Back Bro">
+      <h3>Bounce Back Bro (For Him)</h3>
+      <p>Male stimulator, Snack Pack, Lube & playlist QR Code.</p>
+      <div class="price">R599.00</div>
+      <button class="button" onclick="addToCart('Bounce Back Bro')">Add to Cart</button>
+      <button class="button" onclick="deleteFromCart('Bounce Back Bro')">Delete</button>
+    </div>
   </div>
 
-  <!-- Product 4 -->
-  <div class="product-card">
-    <img src="images/naughty-nights.jpg" alt="Naughty Nights Party Pack">
-    <h3>Surprise Naughty Nights Party Pack</h3>
-    <p>Perfect for birthdays, anniversaries or wild weekends.</p>
-    <div class="price">R899.00</div>
-    <button class="button" onclick="addToCart('Naughty Nights Party Pack')">Add to Cart</button>
-    <button class="button" onclick="deleteFromCart('Naughty Nights Party Pack')">Delete</button>
+  <!-- Dominatrix Collection -->
+  <h2 class="section-heading">🖤 Dominatrix Collection Coming Soon</h2>
+  <div class="product-grid">
+    <!-- Add future product cards here -->
   </div>
 
-</div>
+  <script>
+    // Add item to cart
+    function addToCart(name) {
+      const btn = event.currentTarget;
+      const card = btn.closest('.product-card');
+      const price = parseFloat(card.querySelector('.price').textContent.replace(/[^\d.]/g, ''));
+      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      cart.push({ name, price });
+      localStorage.setItem('cartItems', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    // Delete item from cart
+    function deleteFromCart(name) {
+      let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      const idx = cart.findIndex(i => i.name === name);
+      if (idx >= 0) {
+        cart.splice(idx, 1);
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+        updateCartUI();
+        alert(`${name} removed.`);
+      }
+    }
+
+    // Clear cart
+    function clearCart() {
+      localStorage.removeItem('cartItems');
+      updateCartUI();
+      alert('Cart cleared.');
+    }
+
+    // Update cart count in navbar
+    function updateCartUI() {
+      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartUI();
+      document.getElementById('clear-cart').addEventListener('click', clearCart);
+    });
+  </script>
+</body>
+</html>
+
 
 
 
