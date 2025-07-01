@@ -6,115 +6,34 @@
   <title>Your Cart – AfterGlow Gifts</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #cfa85c;
-    }
-    /* Navbar */
-    nav.navbar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 0;
-      background-color: #111;
-      border-bottom: 2px solid #cfa85c;
-    }
-    .nav-left, .nav-right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-    }
-    .nav-center img {
-      max-width: 150px;
-      height: auto;
-      display: block;
-    }
-    .navbar a {
-      color: #cfa85c;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 8px 12px;
-      transition: color 0.3s;
-    }
-    .navbar a:hover {
-      color: #FFD700;
-    }
-    /* Cart section and form */
+    /* (Your existing style.css is preserved; only navbar and minor tweaks below) */
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #000; color: #cfa85c; }
+    nav.navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #111; border-bottom: 2px solid #cfa85c; }
+    .nav-left, .nav-right { display: flex; gap: 20px; }
+    .nav-center img { max-width: 140px; height: auto; }
+    .navbar a { color: #cfa85c; text-decoration: none; font-weight: bold; }
+    .navbar a:hover { color: #FFD700; }
     .cart-section { padding: 40px 20px; }
     h1 { text-align: center; color: #cfa85c; margin-bottom: 30px; }
-    .cart-items {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #cfa85c;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
-      color: silver;
-    }
-    .cart-item:last-child { border-bottom: none; }
-    .total {
-      text-align: right;
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #cfa85c;
-    }
-    .checkout { text-align: center; margin-top: 30px; }
-    .checkout button {
-      background-color: #8B0000;
-      color: #cfa85c;
-      border: 2px solid #cfa85c;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .address-form {
-      max-width: 800px;
-      margin: 30px auto;
-      background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #cfa85c;
-    }
-    .address-form label {
-      display: block;
-      margin-bottom: 8px;
-      color: silver;
-      font-weight: bold;
-    }
-    .address-form input,
-    .address-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #333;
-      border-radius: 6px;
-      background-color: #222;
-      color: #fff;
-    }
+    .cart-items { max-width:800px; margin:0 auto; background:#111; padding:20px; border-radius:10px; border:1px solid #cfa85c; }
+    .cart-item { display:flex; justify-content:space-between; padding:10px 0; color:silver; border-bottom:1px solid #333; }
+    .cart-item:last-child { border-bottom:none; }
+    .total { max-width:800px; margin:20px auto; text-align:right; font-size:1.2rem; color:#cfa85c; }
+    .address-form { max-width:800px; margin:30px auto; background:#111; padding:20px; border-radius:10px; border:1px solid #cfa85c; }
+    .address-form label { display:block; margin-bottom:8px; color:silver; font-weight:bold; }
+    .address-form input, .address-form textarea { width:100%; padding:10px; margin-bottom:20px; border:1px solid #333; border-radius:6px; background:#222; color:#fff; }
+    .checkout { text-align:center; margin:30px 0; }
+    .checkout button { background:#8B0000; border:2px solid #cfa85c; color:#cfa85c; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer; }
   </style>
 </head>
 <body>
-
   <nav class="navbar">
     <div class="nav-left">
       <a href="index.html">Home</a>
       <a href="retail.html">Retail</a>
     </div>
     <div class="nav-center">
-      <a href="index.html">
-        <img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo">
-      </a>
+      <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
     </div>
     <div class="nav-right">
       <a href="delivery.html">Delivery</a>
@@ -128,8 +47,8 @@
 
     <div style="text-align:center; margin-top:20px;">
       <a href="https://pargo.co.za/find-a-store/" target="_blank">
-        <div class="cart-items" style="max-width:800px; margin:20px auto;">
-          <p id="pargo-fee">Delivery Fee: R90.00</p>
+        <div class="cart-items" style="max-width:800px; margin:10px auto;">
+          <p style="text-align:center; color:#cfa85c;">Delivery Fee: R90.00</p>
         </div>
       </a>
     </div>
@@ -138,20 +57,11 @@
 
     <div class="address-form">
       <h2>Delivery Details</h2>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Enter your full name">
-
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email">
-
-      <label for="address">Delivery Address</label>
-      <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
-
-      <label for="notes">Special Instructions</label>
-      <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
-
-      <label for="pargo">Pargo Point</label>
-      <input type="text" id="pargo" placeholder="Enter your Pargo collection point">
+      <label for="name">Full Name</label><input id="name" type="text" placeholder="Enter your full name">
+      <label for="email">Email</label><input id="email" type="email" placeholder="Enter your email">
+      <label for="address">Delivery Address</label><textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+      <label for="notes">Special Instructions</label><textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+      <label for="pargo">Pargo Collection Point</label><input id="pargo" type="text" placeholder="e.g. Spar Rivonia">
     </div>
 
     <div class="checkout">
@@ -197,17 +107,19 @@
     }
 
     function deleteItem(i) {
-      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
       cart.splice(i, 1);
       localStorage.setItem('cartItems', JSON.stringify(cart));
       renderCart();
     }
 
     function checkout() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const address = document.getElementById('address').value;
-      if (!name || !email ||
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const address = document.getElementById('address').value.trim();
+      if (!name || !email || !address) {
+        alert("Please complete
+
 
 
 
