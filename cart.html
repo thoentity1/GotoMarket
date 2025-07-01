@@ -122,7 +122,15 @@
       <p style="color:#cfa85c;">Delivery Fee: R90.00</p>
     </div>
     <div id="cart-total" class="total"></div>
-    <!-- delivery form omitted for brevity -->
+   <div class="address-form">
+      <h2>Delivery Details</h2>
+      <label for="name">Full Name</label><input id="name" type="text" placeholder="Enter your full name">
+      <label for="email">Email</label><input id="email" type="email" placeholder="Enter your email">
+      <label for="address">Delivery Address</label><textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+      <label for="notes">Special Instructions</label><textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+      <label for="pargo">Pargo Collection Point</label><input id="pargo" type="text" placeholder="e.g. Spar Rivonia">
+    </div>
+
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
     </div>
