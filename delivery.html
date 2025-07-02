@@ -6,7 +6,7 @@
   <title>Delivery – AfterGlow Gifts</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Navbar styling */
+    /* Navbar styling (like homepage) */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -16,40 +16,22 @@
       border-bottom: 2px solid #8B0000;
     }
     .navbar a {
-      background-color: #8B0000;
-      color: #FFD700;
-      padding: 8px 16px;
-      margin: 0 6px;
-      border-radius: 6px;
+      color: #cfa85c;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
-      display: inline-block;
+      font-size: 1rem;
     }
-    .navbar a:hover {
-      background-color: #cfa85c;
-      color: #000;
+    .navbar a.cart {
+      background: #111;
+      border: 2px solid #cfa85c;
+      padding: 6px 12px;
+      border-radius: 8px;
     }
     .navbar img {
-      height: 40px;
-      width: auto;
+      height: 50px;
+      border-radius: 8px;
       cursor: pointer;
-    }
-    .cart {
-      background-color: #8B0000;
-      border: 2px solid #FFD700;
-      color: #FFD700;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      display: inline-block;
-    }
-    .cart:hover {
-      background-color: #cfa85c;
-      color: #000;
-      border-color: #cfa85c;
     }
 
     /* Page styling */
@@ -95,14 +77,13 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="index.html"><img src="Logo_Image.jpg" alt="Afterglow Gifts Logo"></a>
+    <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
     <div>
       <a href="index.html">Home</a>
       <a href="retail.html">Retail</a>
-      <a href="cart.html" class="cart">Cart (<span id="cart-count">0</span>)</a>
+      <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
       <a href="giftcard.html">Gift Card</a>
-      <!-- WhatsApp contact link with your phone number -->
-      <a href="https://wa.me/27601234567" target="_blank" rel="noopener noreferrer">Contact</a>
+      <a href="https://wa.me/27832142201" target="_blank" rel="noopener noreferrer">Contact</a>
     </div>
   </nav>
 
@@ -133,9 +114,18 @@
 
     <p>For assistance, track your parcel using Pargo’s 
       <a href="https://pargo.co.za/track-trace/" target="_blank" rel="noopener noreferrer">Track & Trace</a> 
-      or <a href="">contact us</a>.
+      or <a href="mailto:info@afterglowgifts.co.za">contact us</a>.
     </p>
   </div>
+
+  <script>
+    // Optional: Update cart count dynamically if you use localStorage cart
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      document.querySelector('#cart-count').textContent = cart.length;
+    }
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+  </script>
 
 </body>
 </html>
