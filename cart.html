@@ -1,145 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retail – Afterglow Gifts</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #cfa85c;
-    }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: #000;
-      border-bottom: 1px solid #8B0000;
-    }
-    .navbar a {
-      color: #cfa85c;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .navbar img { height: 50px; border-radius: 8px; }
-    .cart { background: #111; border: 2px solid #cfa85c; padding: 8px 12px; border-radius: 8px; }
-
-    .section-heading {
-      text-align: center;
-      font-size: 1.8rem;
-      margin: 40px 0 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #8B0000;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 0 20px 40px;
-    }
-    .product-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid #8B0000;
-      border-radius: 10px;
-      width: 260px;
-      padding: 15px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .product-card img, .slideshow-container img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .price { font-weight: bold; color: silver; margin-top: auto; }
-    .button {
-      background: #8B0000;
-      color: #cfa85c;
-      padding: 8px 16px;
-      border: 2px solid #cfa85c;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-    }
-
-    /* Slideshow */
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      padding-top: 75%; /* aspect ratio */
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-    .mySlides {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #cfa85c;
-      padding: 8px;
-      border-radius: 50%;
-      font-size: 18px;
-      user-select: none;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-  </style>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cart – AfterGlow Gifts</title>
+<style>
+  body {
+    background: #000;
+    color: #cfa85c;
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    border-bottom: 1px solid #8B0000;
+    padding: 10px 20px;
+  }
+  .navbar a {
+    color: #cfa85c;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .navbar img {
+    height: 50px;
+    border-radius: 8px;
+  }
+  .cart-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #cart-items {
+    background: #111;
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 150px;
+    color: silver;
+    margin-bottom: 20px;
+  }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #8B0000;
+  }
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  .cart-item button {
+    background: #8B0000;
+    border: 2px solid #cfa85c;
+    color: #cfa85c;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  #cart-total {
+    background: #111;
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 15px;
+    font-weight: bold;
+    color: silver;
+    margin-bottom: 30px;
+    text-align: right;
+  }
+  .address-form {
+    background: #111;
+    border: 1px solid #8B0000;
+    border-radius: 10px;
+    padding: 20px;
+    color: #cfa85c;
+    margin-bottom: 30px;
+  }
+  .address-form h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #222;
+    color: #cfa85c;
+    resize: vertical;
+    font-size: 1rem;
+  }
+  textarea {
+    min-height: 60px;
+  }
+  .checkout {
+    text-align: center;
+  }
+  .checkout button {
+    background: #8B0000;
+    color: #cfa85c;
+    padding: 12px 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid #cfa85c;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .checkout button:hover {
+    background: #cfa85c;
+    color: #8B0000;
+  }
+</style>
 </head>
 <body>
 
   <nav class="navbar">
-    <a href="index.html"><img src="Logo_Image.jpg" alt="Afterglow Gifts Logo"></a>
+    <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
     <div>
       <a href="index.html">Home</a>
       <a href="retail.html">Retail</a>
       <a href="delivery.html">Delivery</a>
       <a href="giftcard.html">Gift Card</a>
-      <a href="#">Contact</a>
+      <a href="https://wa.me/27832142201" target="_blank" rel="noopener noreferrer">Contact</a>
     </div>
+    <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
   </nav>
 
   <section class="cart-section">
     <h1>Your Cart</h1>
-    <div id="cart-items" class="cart-items"></div>
-    <div style="text-align:center; margin:20px;">
-      <p style="color:#cfa85c;">Delivery Fee: R90.00</p>
+    <div id="cart-items" class="cart-items">
+      <p style="color:silver; text-align:center;">Your cart is empty.</p>
+    </div>
+    <div style="text-align:center; margin:20px; font-weight:bold; color:#cfa85c;">
+      Delivery Fee: R90.00
     </div>
     <div id="cart-total" class="total"></div>
-      <div class="address-form">
-     <div class="address-form">
+
+    <div class="address-form">
       <h2>Delivery Details</h2>
       <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Enter your full name">
+      <input type="text" id="name" placeholder="Enter your full name" />
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email">
+      <input type="email" id="email" placeholder="Enter your email" />
 
       <label for="address">Delivery Address</label>
       <textarea id="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
 
       <label for="notes">Special Instructions</label>
       <textarea id="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
-      
-         <label for="Pargo delivery">Pargo</label>
-      <input type="pargo " id="pargo" placeholder="Enter your Pargo delivery point">
+
+      <label for="pargo">Pargo Delivery Point</label>
+      <input type="text" id="pargo" placeholder="Enter your Pargo delivery point" />
     </div>
+
     <div class="checkout">
       <button onclick="checkout()">Proceed to Checkout</button>
     </div>
@@ -150,7 +176,6 @@
 
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      console.log('Cart contents:', cart);
       const container = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
       container.innerHTML = '';
@@ -185,6 +210,18 @@
     }
 
     function checkout() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const pargo = document.getElementById('pargo').value.trim();
+
+      if (!name || !email || !address) {
+        alert('Please fill in your full name, email, and delivery address.');
+        return;
+      }
+
+      // You could add code here to send order details to server or email
+
       localStorage.removeItem('cartItems');
       alert('Thank you! Order processed.');
       renderCart();
@@ -194,6 +231,7 @@
   </script>
 </body>
 </html>
+
 
 
 
