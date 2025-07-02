@@ -98,22 +98,23 @@
     }
 
     /* Carousel */
-    .slideshow-container {
+    .carousel {
       position: relative;
       width: 100%;
-      height: 250px;
+      height: 220px;
       overflow: hidden;
     }
 
-    .slides {
+    .carousel img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
       display: none;
+      border-radius: 8px;
     }
 
-    .slideshow-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
+    .carousel img.active {
+      display: block;
     }
 
     .prev, .next {
@@ -121,12 +122,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       color: #FFD700;
       padding: 6px 12px;
       border-radius: 50%;
       font-weight: bold;
       font-size: 18px;
+      user-select: none;
     }
 
     .prev { left: 8px; }
@@ -154,14 +156,14 @@
   <!-- Signature Sensual Packs -->
   <h2 class="section-heading">💘 Signature Sensual Packs</h2>
   <div class="product-grid">
-    <!-- Product 1 with Carousel -->
+    <!-- Product 1 with carousel -->
     <div class="product-card">
-      <div class="slideshow-container">
-        <img class="slides slide-1" src="images/AfterGlow_Massage_Pulse.jpg" alt="Pulse">
-        <img class="slides slide-1" src="images/AfterGlow_Massage_Candle.jpg" alt="Candle">
-        <img class="slides slide-1" src="images/AfterGlow_Snack_Pack_.jpg" alt="Snack">
-        <a class="prev" onclick="plusSlides(-1, 1)">❮</a>
-        <a class="next" onclick="plusSlides(1, 1)">❯</a>
+      <div class="carousel" data-group="pulse">
+        <img src="images/AfterGlow_Massage_Pulse.jpg" class="active" alt="Pulse">
+        <img src="images/AfterGlow_Massage_Candle.jpg" alt="Candle">
+        <img src="images/AfterGlow_Snack_Pack_.jpg" alt="Snack">
+        <span class="prev" onclick="changeSlide('pulse', -1)">❮</span>
+        <span class="next" onclick="changeSlide('pulse', 1)">❯</span>
       </div>
       <h3>Midnight Pulse Massager Pack</h3>
       <p>High‑intensity vibe, Massage candle & Snack bundle.</p>
@@ -170,135 +172,13 @@
       <button class="button" onclick="deleteFromCart('Midnight Pulse Massager Pack')">Delete</button>
     </div>
 
-    <!-- Product 2 with Carousel -->
+    <!-- Product 2 with carousel -->
     <div class="product-card">
-      <div class="slideshow-container">
-        <img class="slides slide-2" src="images/Couple Tease and Please Game Truth.jpg" alt="Game Truth">
-        <img class="slides slide-2" src="images/Couple Tease and Please Toys.jpg" alt="Game Toys">
-        <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-        <a class="next" onclick="plusSlides(1, 2)">❯</a>
-      </div>
-      <h3>Tease &amp; Please Game Kit</h3>
-      <p>Playful dares and surprises to spice up your night.</p>
-      <div class="price">R499.00</div>
-      <button class="button" onclick="addToCart('Tease & Please Game Kit')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Tease & Please Game Kit')">Delete</button>
-    </div>
+      <div class="carousel" data-group="gamekit">
+        <img src="images/Couple Tease and Please Game Truth.jpg" class="active" alt="Game">
+        <img src="images/Couple Tease and Please Toys.jpg" alt="Toys">
+        <span class="prev" onclick="changeSlide('gamekit', -
 
-    <!-- Other Products -->
-    <div class="product-card">
-      <div class="slideshow-container">
-      <img src="images/sensual-sweets.jpg" alt="Sensual Sweets">
-         <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-        <a class="next" onclick="plusSlides(1, 2)">❯</a>
-        <div>
-      <h3>Sensual Sweets</h3>
-      <p>Candy for relaxing pleasure.</p>
-      <div class="price">R199.00</div>
-      <button class="button" onclick="addToCart('Sensual Sweets')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Sensual Sweets')">Delete</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/Couples tease toys.jpg" alt="Naughty Nights Party Pack">
-       <img src="images/Couple Tease and Please Toys.jpg" alt="Naughty Nights Party Pack">
-      <h3>Surprise Naughty Nights Party Pack</h3>
-      <p>Perfect for birthdays, anniversaries or wild weekends.</p>
-       <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-        <a class="next" onclick="plusSlides(1, 2)">❯</a>
-      <div class="price">R899.00</div>
-      <button class="button" onclick="addToCart('Naughty Nights Party Pack')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Naughty Nights Party Pack')">Delete</button>
-    </div>
-  </div>
-
-  <!-- Breakup Recovery Boxes -->
-  <h2 class="section-heading">💔 Breakup Recovery Boxes</h2>
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="images/glow-up-box.jpg" alt="Glow Up & Move On">
-       <a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-        <a class="next" onclick="plusSlides(1, 2)">❯</a>
-      <h3>Glow Up & Move On (For Her)</h3>
-      <p>Rose vibe Waterproof, Gummies and Smoothies, Candle, Bath Oil & Playlist QR Code.</p>
-      <div class="price">R599.00</div>
-      <button class="button" onclick="addToCart('Glow Up & Move On')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Glow Up & Move On')">Delete</button>
-    </div>
-
-    <div class="product-card">
-      <img src="images/bounce-back-bro.jpg" alt="Bounce Back Bro">
-      <h3>Bounce Back Bro (For Him)</h3>
-      <p>Male stimulator, Snack Pack, Lube & playlist QR Code.</p>
-      <div class="price">R599.00</div>
-      <button class="button" onclick="addToCart('Bounce Back Bro')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Bounce Back Bro')">Delete</button>
-    </div>
-  </div>
-
-  <!-- Dominatrix Collection -->
-  <h2 class="section-heading">🖤 Dominatrix Collection Coming Soon</h2>
-  <div class="product-grid">
-    <!-- Future products -->
-  </div>
-
-  <script>
-    function addToCart(name) {
-      const btn = event.currentTarget;
-      const card = btn.closest('.product-card');
-      const price = parseFloat(card.querySelector('.price').textContent.replace(/[^\d.]/g, ''));
-      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cart.push({ name, price });
-      localStorage.setItem('cartItems', JSON.stringify(cart));
-      updateCartUI();
-    }
-
-    function deleteFromCart(name) {
-      let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      const idx = cart.findIndex(i => i.name === name);
-      if (idx >= 0) {
-        cart.splice(idx, 1);
-        localStorage.setItem('cartItems', JSON.stringify(cart));
-        updateCartUI();
-        alert(`${name} removed.`);
-      }
-    }
-
-    function clearCart() {
-      localStorage.removeItem('cartItems');
-      updateCartUI();
-      alert('Cart cleared.');
-    }
-
-    function updateCartUI() {
-      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      document.getElementById('cart-count').textContent = cart.length;
-    }
-
-    // Carousel Logic
-    const slideIndices = {};
-    function plusSlides(n, group) {
-      const className = 'slide-' + group;
-      const slides = document.getElementsByClassName(className);
-      if (!slideIndices[group]) slideIndices[group] = 1;
-      slideIndices[group] += n;
-      if (slideIndices[group] > slides.length) slideIndices[group] = 1;
-      if (slideIndices[group] < 1) slideIndices[group] = slides.length;
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slides[slideIndices[group] - 1].style.display = "block";
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartUI();
-      document.getElementById('clear-cart').addEventListener('click', clearCart);
-      plusSlides(0, 1);
-      plusSlides(0, 2);
-    });
-  </script>
-</body>
-</html>
 
 
 
