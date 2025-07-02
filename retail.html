@@ -71,33 +71,6 @@
       gap: 10px;
     }
 
-    .product-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .price {
-      font-weight: bold;
-      color: silver;
-      margin-top: auto;
-    }
-
-    .button {
-      background: #8B0000;
-      color: #FFD700;
-      padding: 8px 16px;
-      border: 2px solid #FFD700;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-    }
-
-    #clear-cart {
-      margin-left: 10px;
-    }
-
-    /* Carousel */
     .carousel {
       position: relative;
       width: 100%;
@@ -133,11 +106,20 @@
 
     .prev { left: 8px; }
     .next { right: 8px; }
+
+    .button {
+      background: #8B0000;
+      color: #FFD700;
+      padding: 8px 16px;
+      border: 2px solid #FFD700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
     <div>
@@ -153,31 +135,149 @@
     </div>
   </nav>
 
-  <!-- Signature Sensual Packs -->
   <h2 class="section-heading">💘 Signature Sensual Packs</h2>
   <div class="product-grid">
-    <!-- Product 1 with carousel -->
     <div class="product-card">
-      <div class="carousel" data-group="pulse">
-        <img src="images/AfterGlow_Massage_Pulse.jpg" class="active" alt="Pulse">
-        <img src="images/AfterGlow_Massage_Candle.jpg" alt="Candle">
-        <img src="images/AfterGlow_Snack_Pack_.jpg" alt="Snack">
-        <span class="prev" onclick="changeSlide('pulse', -1)">❮</span>
-        <span class="next" onclick="changeSlide('pulse', 1)">❯</span>
+      <div class="carousel" data-group="1">
+        <img src="images/sensual1.jpg" class="active" />
+        <img src="images/sensual2.jpg" />
+        <img src="images/sensual3.jpg" />
+        <span class="prev" onclick="changeSlide(1, -1)">❮</span>
+        <span class="next" onclick="changeSlide(1, 1)">❯</span>
       </div>
       <h3>Midnight Pulse Massager Pack</h3>
-      <p>High‑intensity vibe, Massage candle & Snack bundle.</p>
+      <p>High-intensity vibe, massage candle & snack bundle.</p>
       <div class="price">R499.00</div>
-      <button class="button" onclick="addToCart('Midnight Pulse Massager Pack')">Add to Cart</button>
-      <button class="button" onclick="deleteFromCart('Midnight Pulse Massager Pack')">Delete</button>
+      <button class="button">Add to Cart</button>
     </div>
-
-    <!-- Product 2 with carousel -->
     <div class="product-card">
-      <div class="carousel" data-group="gamekit">
-        <img src="images/Couple Tease and Please Game Truth.jpg" class="active" alt="Game">
-        <img src="images/Couple Tease and Please Toys.jpg" alt="Toys">
-        <span class="prev" onclick="changeSlide('gamekit', -
+      <div class="carousel" data-group="4">
+        <img src="images/sensual4.jpg" class="active" />
+        <img src="images/sensual5.jpg" />
+        <img src="images/sensual6.jpg" />
+        <span class="prev" onclick="changeSlide(4, -1)">❮</span>
+        <span class="next" onclick="changeSlide(4, 1)">❯</span>
+      </div>
+      <h3>Tease & Please Kit</h3>
+      <p>Playful dares and surprises for couples.</p>
+      <div class="price">R499.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <div class="carousel" data-group="5">
+        <img src="images/sensual7.jpg" class="active" />
+        <img src="images/sensual8.jpg" />
+        <img src="images/sensual9.jpg" />
+        <span class="prev" onclick="changeSlide(5, -1)">❮</span>
+        <span class="next" onclick="changeSlide(5, 1)">❯</span>
+      </div>
+      <h3>Sensual Sweets</h3>
+      <p>Candy and oils to delight the senses.</p>
+      <div class="price">R199.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+  </div>
+
+  <h2 class="section-heading">💔 Breakup Recovery Boxes</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="carousel" data-group="2">
+        <img src="images/breakup1.jpg" class="active" />
+        <img src="images/breakup2.jpg" />
+        <img src="images/breakup3.jpg" />
+        <span class="prev" onclick="changeSlide(2, -1)">❮</span>
+        <span class="next" onclick="changeSlide(2, 1)">❯</span>
+      </div>
+      <h3>Glow Up & Move On (For Her)</h3>
+      <p>Rose vibe, gummies, candle, oil & playlist QR.</p>
+      <div class="price">R599.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <div class="carousel" data-group="6">
+        <img src="images/breakup4.jpg" class="active" />
+        <img src="images/breakup5.jpg" />
+        <img src="images/breakup6.jpg" />
+        <span class="prev" onclick="changeSlide(6, -1)">❮</span>
+        <span class="next" onclick="changeSlide(6, 1)">❯</span>
+      </div>
+      <h3>Bounce Back Bro (For Him)</h3>
+      <p>Stimulator, snacks, lube & playlist QR.</p>
+      <div class="price">R599.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <div class="carousel" data-group="7">
+        <img src="images/breakup7.jpg" class="active" />
+        <img src="images/breakup8.jpg" />
+        <img src="images/breakup9.jpg" />
+        <span class="prev" onclick="changeSlide(7, -1)">❮</span>
+        <span class="next" onclick="changeSlide(7, 1)">❯</span>
+      </div>
+      <h3>Self Love Deluxe</h3>
+      <p>Luxury bath set, journal, treats & affirmations.</p>
+      <div class="price">R699.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+  </div>
+
+  <h2 class="section-heading">🖤 Dominatrix Collection</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="carousel" data-group="3">
+        <img src="images/dom1.jpg" class="active" />
+        <img src="images/dom2.jpg" />
+        <img src="images/dom3.jpg" />
+        <span class="prev" onclick="changeSlide(3, -1)">❮</span>
+        <span class="next" onclick="changeSlide(3, 1)">❯</span>
+      </div>
+      <h3>Intro to Bondage</h3>
+      <p>Soft restraints, blindfold & feather teaser.</p>
+      <div class="price">R399.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <div class="carousel" data-group="8">
+        <img src="images/dom4.jpg" class="active" />
+        <img src="images/dom5.jpg" />
+        <img src="images/dom6.jpg" />
+        <span class="prev" onclick="changeSlide(8, -1)">❮</span>
+        <span class="next" onclick="changeSlide(8, 1)">❯</span>
+      </div>
+      <h3>Leather Luxe Kit</h3>
+      <p>Whip, collar and cuffs set in leather finish.</p>
+      <div class="price">R899.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <div class="carousel" data-group="9">
+        <img src="images/dom7.jpg" class="active" />
+        <img src="images/dom8.jpg" />
+        <img src="images/dom9.jpg" />
+        <span class="prev" onclick="changeSlide(9, -1)">❮</span>
+        <span class="next" onclick="changeSlide(9, 1)">❯</span>
+      </div>
+      <h3>Obey & Play Set</h3>
+      <p>Roleplay cards, rope, crop & more surprises.</p>
+      <div class="price">R649.00</div>
+      <button class="button">Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    const slideIndices = {};
+
+    function changeSlide(group, n) {
+      const carousel = document.querySelector(`.carousel[data-group="${group}"]`);
+      const images = carousel.querySelectorAll('img');
+      if (!slideIndices[group]) slideIndices[group] = 0;
+      slideIndices[group] = (slideIndices[group] + n + images.length) % images.length;
+      images.forEach((img, i) => img.classList.toggle('active', i === slideIndices[group]));
+    }
+  </script>
+</body>
+</html>
+
 
 
 
