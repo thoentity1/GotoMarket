@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cart – AfterGlow Gifts</title>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <style>
   body {
     background: #000;
@@ -167,22 +168,25 @@
     </div>
 
     <div class="checkout">
-      <button onclick="checkout()">Proceed to Checkout</button>
+      <button onclick="checkout()">Send Order</button>
     </div>
   </section>
 
   <script>
+    emailjs.init("your_user_ID_here"); // Replace with your actual EmailJS user ID
     const DELIVERY_FEE = 90;
 
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
       const container = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
+      const cartCount = document.getElementById('cart-count');
       container.innerHTML = '';
 
       if (cart.length === 0) {
         container.innerHTML = "<p style='color:silver; text-align:center;'>Your cart is empty.</p>";
         totalEl.innerHTML = '';
+        cartCount.textContent = '0';
         return;
       }
 
@@ -195,6 +199,8 @@
         container.appendChild(div);
       });
 
+      cartCount.textContent = cart.length;
+
       totalEl.innerHTML = `
         <div>Subtotal: R${subtotal.toFixed(2)}</div>
         <div>Delivery: R${DELIVERY_FEE.toFixed(2)}</div>
@@ -204,7 +210,7 @@
 
     function deleteItem(i) {
       const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cart.splice(i,1);
+      cart.splice(i, 1);
       localStorage.setItem('cartItems', JSON.stringify(cart));
       renderCart();
     }
@@ -214,23 +220,42 @@
       const email = document.getElementById('email').value.trim();
       const address = document.getElementById('address').value.trim();
       const pargo = document.getElementById('pargo').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
 
       if (!name || !email || !address) {
         alert('Please fill in your full name, email, and delivery address.');
         return;
       }
 
-      // You could add code here to send order details to server or email
+      const orderDetails = cart.map(item => `${item.name} - R${item.price}`).join('\n');
+      const total = cart.reduce((sum, item) => sum + Number(item.price), 0) + DELIVERY_FEE;
 
-      localStorage.removeItem('cartItems');
-      alert('Thank you! Order processed.');
-      renderCart();
+      const templateParams = {
+        name,
+        email,
+        address,
+        pargo,
+        notes,
+        order: orderDetails,
+        total: total.toFixed(2)
+      };
+
+      emailjs.send('your_service_ID', 'your_template_ID', templateParams)
+        .then(function(response) {
+          alert('Order sent successfully!');
+          localStorage.removeItem('cartItems');
+          renderCart();
+        }, function(error) {
+          alert('Order failed to send. Please try again.');
+        });
     }
 
     document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
+
 
 
 
