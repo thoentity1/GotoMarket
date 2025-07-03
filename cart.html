@@ -128,7 +128,8 @@
       container.innerHTML = cart.map(item => {
         total += parseFloat(item.price);
         return `<div class="cart-item"><span>${item.name}</span><span>R${item.price}</span></div>`;
-      }).join("") + `<div class="cart-item"><strong>Total</strong><strong>R${total.toFixed(2)}</strong></div>`;
+      }).join("") + `<div class="cart-item"><span>Pargo Delivery</span><span>R90.00</span></div>`
+        + `<div class="cart-item"><strong>Total</strong><strong>R${(total + 90).toFixed(2)}</strong></div>`;
     }
 
     function sendOrder() {
@@ -144,8 +145,8 @@
         return;
       }
 
-      const cart_summary = cart.map(p => `${p.name} - R${p.price}`).join("\n");
-      const total = cart.reduce((sum, p) => sum + parseFloat(p.price), 0).toFixed(2);
+      const cart_summary = cart.map(p => `${p.name} - R${p.price}`).join("\n") + "\nPargo Delivery - R90.00";
+      const total = (cart.reduce((sum, p) => sum + parseFloat(p.price), 0) + 90).toFixed(2);
 
       emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
         name,
@@ -169,3 +170,4 @@
   </script>
 </body>
 </html>
+
