@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retail – AfterGlow Gifts</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart – AfterGlow Gifts</title>
+  <link rel="stylesheet" href="style.css"/>
   <style>
     body {
       margin: 0;
@@ -12,7 +12,6 @@
       background: #000;
       color: #cfa85c;
     }
-
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -21,107 +20,69 @@
       background: #000;
       border-bottom: 2px solid #8B0000;
     }
-
     .navbar a {
       color: #cfa85c;
       margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
-
     .navbar img {
       height: 50px;
       border-radius: 8px;
     }
-
-    .cart {
-      background: #111;
-      border: 2px solid #cfa85c;
-      padding: 8px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-
     .section-heading {
       text-align: center;
       font-size: 1.8rem;
-      margin: 40px 0 20px;
+      margin: 30px 0 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #8B0000;
     }
-
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 0 20px 40px;
-    }
-
-    .product-card {
+    .cart-items, .delivery-form {
+      max-width: 600px;
+      margin: 20px auto;
       background: #111;
-      border: 1px solid #8B0000;
+      border: 1px solid #cfa85c;
+      padding: 20px;
       border-radius: 10px;
-      width: 260px;
-      padding: 15px;
-      text-align: center;
+    }
+    .cart-item {
+      border-bottom: 1px solid #8B0000;
+      padding: 10px 0;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      justify-content: space-between;
     }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-    }
-
-    .carousel img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: none;
-      border-radius: 8px;
-    }
-
-    .carousel img.active {
-      display: block;
-    }
-
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #FFD700;
-      padding: 6px 12px;
-      border-radius: 50%;
-      font-weight: bold;
-      font-size: 18px;
-      user-select: none;
-    }
-
-    .prev { left: 8px; }
-    .next { right: 8px; }
-
     .button {
       background: #8B0000;
       color: #FFD700;
-      padding: 8px 16px;
+      padding: 10px 16px;
       border: 2px solid #FFD700;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      margin-top: 10px;
       width: 100%;
     }
+    label {
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #cfa85c;
+      background: #222;
+      color: #FFD700;
+    }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("YOUR_USER_ID");
+  </script>
 </head>
 <body>
   <nav class="navbar">
-    <a href="index.html"><img src="Logo_Image.jpg" alt="AfterGlow Gifts Logo"></a>
+    <a href="index.html"><img src="Logo_Image.jpg" alt="Logo"></a>
     <div>
       <a href="index.html">Home</a>
       <a href="retail.html">Retail</a>
@@ -129,114 +90,82 @@
       <a href="giftcard.html">Gift Card</a>
       <a href="https://wa.me/27832142201" target="_blank">Contact</a>
     </div>
-    <div class="navbar-controls">
-      <a href="cart.html" class="cart">🛒 Cart (<span id="cart-count">0</span>)</a>
-      <button id="clear-cart" class="button">Clear Cart</button>
-    </div>
   </nav>
 
-  <h2 class="section-heading">💘 Signature Sensual Packs</h2>
-  <div class="product-grid" id="sensual-grid"></div>
+  <h2 class="section-heading">🛒 Your Cart</h2>
+  <div class="cart-items" id="cart-items"></div>
 
-  <h2 class="section-heading">💔 Breakup Recovery Boxes</h2>
-  <div class="product-grid" id="breakup-grid"></div>
-
-  <h2 class="section-heading">🖤 Dominatrix Collection</h2>
-  <div class="product-grid" id="dom-grid"></div>
-
-  <h2 class="section-heading">Delivery Details</h2>
-  <div class="product-grid" style="max-width:600px;margin:auto;">
+  <h2 class="section-heading">🚚 Delivery Details</h2>
+  <div class="delivery-form">
     <label for="name">Full Name</label>
-    <input type="text" id="name" name="name" placeholder="Enter your full name" />
+    <input type="text" id="name" placeholder="Enter your full name" />
 
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email" />
+    <input type="email" id="email" placeholder="Enter your email" />
 
     <label for="address">Delivery Address</label>
-    <textarea id="address" name="address" rows="4" placeholder="Street address, suburb, city, postal code"></textarea>
+    <textarea id="address" rows="3" placeholder="Street address, suburb, city, postal code"></textarea>
 
     <label for="notes">Special Instructions</label>
-    <textarea id="notes" name="notes" rows="3" placeholder="Optional notes for delivery"></textarea>
+    <textarea id="notes" rows="2" placeholder="Optional notes for delivery"></textarea>
 
     <label for="pargo">Pargo Delivery Point</label>
-    <input type="text" id="pargo" name="pargo" placeholder="Enter your Pargo delivery point" />
+    <input type="text" id="pargo" placeholder="Enter your Pargo delivery point" />
+
+    <button class="button" onclick="sendOrder()">Send Order</button>
   </div>
 
   <script>
-    const slideIndices = {};
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cartItems") || "[]");
+      const container = document.getElementById("cart-items");
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
 
-    function changeSlide(group, n) {
-      const carousel = document.querySelector(`.carousel[data-group="${group}"]`);
-      const images = carousel.querySelectorAll('img');
-      if (!slideIndices[group]) slideIndices[group] = 0;
-      slideIndices[group] = (slideIndices[group] + n + images.length) % images.length;
-      images.forEach((img, i) => img.classList.toggle('active', i === slideIndices[group]));
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        total += parseFloat(item.price);
+        return `<div class="cart-item"><span>${item.name}</span><span>R${item.price}</span></div>`;
+      }).join("") + `<div class="cart-item"><strong>Total</strong><strong>R${total.toFixed(2)}</strong></div>`;
     }
 
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      document.getElementById('cart-count').textContent = cart.length;
-    }
+    function sendOrder() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const address = document.getElementById("address").value;
+      const notes = document.getElementById("notes").value;
+      const pargo = document.getElementById("pargo").value;
+      const cart = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-    function addToCart(name, price) {
-      const cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      cart.push({ name, price });
-      localStorage.setItem('cartItems', JSON.stringify(cart));
-      updateCartCount();
-      alert(`${name} added to cart!`);
-    }
+      if (!name || !email || !address || cart.length === 0) {
+        alert("Please fill in all required fields and make sure your cart is not empty.");
+        return;
+      }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartCount();
+      const cart_summary = cart.map(p => `${p.name} - R${p.price}`).join("\n");
+      const total = cart.reduce((sum, p) => sum + parseFloat(p.price), 0).toFixed(2);
 
-      const products = [
-        { group: 1, name: "Midnight Pulse Massager Pack", desc: "High-intensity vibe, massage candle & snack bundle.", price: "499.00", images: ["sensual1.jpg", "sensual2.jpg", "sensual3.jpg"] },
-        { group: 2, name: "Tease & Please Kit", desc: "Playful dares and surprises for couples.", price: "499.00", images: ["sensual4.jpg", "sensual5.jpg", "sensual6.jpg"] },
-        { group: 3, name: "Sensual Sweets", desc: "Candy and oils to delight the senses.", price: "199.00", images: ["sensual7.jpg", "sensual8.jpg", "sensual9.jpg"] },
-        { group: 4, name: "Glow Up & Move On (For Her)", desc: "Rose vibe, gummies, candle, oil & playlist QR.", price: "599.00", images: ["breakup1.jpg", "breakup2.jpg", "breakup3.jpg"] },
-        { group: 5, name: "Bounce Back Bro (For Him)", desc: "Stimulator, snacks, lube & playlist QR.", price: "599.00", images: ["breakup4.jpg", "breakup5.jpg", "breakup6.jpg"] },
-        { group: 6, name: "Self Love Deluxe", desc: "Luxury bath set, journal, treats & affirmations.", price: "699.00", images: ["breakup7.jpg", "breakup8.jpg", "breakup9.jpg"] },
-        { group: 7, name: "Intro to Bondage", desc: "Soft restraints, blindfold & feather teaser.", price: "399.00", images: ["dom1.jpg", "dom2.jpg", "dom3.jpg"] },
-        { group: 8, name: "Leather Luxe Kit", desc: "Whip, collar and cuffs set in leather finish.", price: "899.00", images: ["dom4.jpg", "dom5.jpg", "dom6.jpg"] },
-        { group: 9, name: "Obey & Play Set", desc: "Roleplay cards, rope, crop & more surprises.", price: "649.00", images: ["dom7.jpg", "dom8.jpg", "dom9.jpg"] },
-      ];
-
-      const grids = {
-        1: document.getElementById('sensual-grid'),
-        2: document.getElementById('sensual-grid'),
-        3: document.getElementById('sensual-grid'),
-        4: document.getElementById('breakup-grid'),
-        5: document.getElementById('breakup-grid'),
-        6: document.getElementById('breakup-grid'),
-        7: document.getElementById('dom-grid'),
-        8: document.getElementById('dom-grid'),
-        9: document.getElementById('dom-grid')
-      };
-
-      products.forEach(prod => {
-        const imageTags = prod.images.map((img, i) => `<img src="images/${img}" class="${i === 0 ? 'active' : ''}" />`).join('');
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <div class="carousel" data-group="${prod.group}">
-            ${imageTags}
-            <span class="prev" onclick="changeSlide(${prod.group}, -1)">❮</span>
-            <span class="next" onclick="changeSlide(${prod.group}, 1)">❯</span>
-          </div>
-          <h3>${prod.name}</h3>
-          <p>${prod.desc}</p>
-          <div class="price">R${prod.price}</div>
-          <button class="button" onclick="addToCart('${prod.name}', '${prod.price}')">Add to Cart</button>
-        `;
-        grids[prod.group].appendChild(card);
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        name,
+        email,
+        address,
+        notes,
+        pargo,
+        cart_summary,
+        total: `R${total}`
+      }).then(() => {
+        alert("Order sent successfully!");
+        localStorage.removeItem("cartItems");
+        window.location.reload();
+      }).catch(error => {
+        console.error("Error:", error);
+        alert("Order failed to send. Please try again.");
       });
+    }
 
-      document.getElementById('clear-cart').addEventListener('click', () => {
-        localStorage.removeItem('cartItems');
-        updateCartCount();
-        alert('Cart cleared');
-      });
-    });
+    document.addEventListener("DOMContentLoaded", loadCart);
   </script>
 </body>
 </html>
