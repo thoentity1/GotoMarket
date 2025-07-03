@@ -77,7 +77,7 @@
   </style>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    emailjs.init("YOUR_USER_ID");
+    emailjs.init("R8YQ6uFuEg24lKXoj");
   </script>
 </head>
 <body>
@@ -148,7 +148,7 @@
       const cart_summary = cart.map(p => `${p.name} - R${p.price}`).join("\n") + "\nPargo Delivery - R90.00";
       const total = (cart.reduce((sum, p) => sum + parseFloat(p.price), 0) + 90).toFixed(2);
 
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      emailjs.send("service_zjd2z2i", "template_ucf2lmq", {
         name,
         email,
         address,
