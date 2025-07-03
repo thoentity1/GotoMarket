@@ -140,7 +140,7 @@
       const pargo = document.getElementById("pargo").value;
       const cart = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-      if (!name || !email || !address || cart.length === 0) {
+      if (!name || !email || !address || !pargo || cart.length === 0) {
         alert("Please fill in all required fields and make sure your cart is not empty.");
         return;
       }
