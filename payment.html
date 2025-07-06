@@ -1,20 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Payment - Phantom studioZ</title>
+  <meta charset="UTF-8">
+  <title>Send Payment Link – AfterGlow Gifts</title>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      background-color: #000;
+      color: #FFD700;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #FFD700;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #FF3333;
+      border-radius: 6px;
+      background-color: #111;
+      color: #FFD700;
+    }
+
+    button {
+      background-color: #FF3333;
+      color: #FFD700;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 30px;
+      max-width: 200px;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Secure Payment with Yoco</h1>
-  <p>Total: <span id="payment-amount">$0</span></p>
 
-  <!-- Replace this with your actual Yoco redirect link -->
-  <a href="https://pay.yoco.com/your-yoco-link" target="_blank">
-    <button>Pay with Yoco</button>
+  <!-- Logo linking to homepage -->
+  <a href="https://thoentity1.github.io/GotoMarket/index.html">
+    <img src="https://thoentity1.github.io/GotoMarket/Logo_Image.jpg" alt="AfterGlow Gifts Logo" class="logo">
   </a>
 
-  <p><a href="confirmation.html">I have completed payment</a></p>
+  <h2>Send Payment Link Email</h2>
+
+  <input type="text" id="orderNumber" placeholder="Order # (e.g. AG12345)" required>
+  <input type="text" id="name" placeholder="Customer Full Name" required>
+  <input type="email" id="email" placeholder="Customer Email Address" required>
+  <input type="text" id="total" placeholder="Total Amount (e.g., R589.00)" required>
+  <input type="url" id="yocoLink" placeholder="Paste Yoco Payment Link (https://pay.yoco.com/xxx)" required>
+  <textarea id="pargo" placeholder="Pargo Pickup Location or Address" rows="2" required></textarea>
+  <textarea id="orderSummary" placeholder="Order Summary (e.g. 1x Midnight Pulse – R499, 1x Delivery – R90)" rows="4" required></textarea>
+
+  <button onclick="sendPaymentEmail()">Send Payment Email</button>
+
+  <div class="status" id="statusMessage"></div>
+
+  <script>
+    (function() {
+      emailjs.init("YOUR_USER_ID"); // 🔁 Replace with your actual EmailJS User ID
+    })();
+
+    function sendPaymentEmail() {
+      const orderNumber = document.getElementById("orderNumber").value;
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const total = document.getElementById("total").value;
+      const yocoLink = document.getElementById("yocoLink").value;
+      const pargo = document.getElementById("pargo").value;
+      const orderSummary = document.getElementById("orderSummary").value;
+
+      if (!orderNumber || !name || !email || !total || !yocoLink || !pargo || !orderSummary) {
+        document.getElementById("statusMessage").innerText = "Please fill in all fields.";
+        return;
+      }
+
+      const templateParams = {
+        order_number: orderNumber,
+        name: name,
+        email: email,
+        total: total,
+        yoco_payment_link: yocoLink,
+        pargo: pargo,
+        order_summary: orderSummary
+      };
+
+      emailjs.send("your_service_id", "payment_link_email", templateParams)
+        .then(function(response) {
+          document.getElementById("statusMessage").innerText = "✅ Payment email sent successfully!";
+        }, function(error) {
+          document.getElementById("statusMessage").innerText = "❌ Failed to send email: " + error.text;
+        });
+    }
+  </script>
+
 </body>
 </html>
+
 
   
